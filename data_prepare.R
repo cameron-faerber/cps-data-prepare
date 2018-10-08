@@ -3,7 +3,12 @@ library(data.table)
 source("functions.R")
 
 # import raw data / dictionary data #
-raw = readLines("data/asec2018_pubuse.dat", encoding="UTF-8")
+# note original data is split into 4 separate files due to github file restriction size. you may also download the raw data from the website and read that directly in
+files = list.files("data/", pattern="\\.dat$", full.names=T)
+raw = list()
+for(f in files) raw[[f]] = readLines(f)
+raw = unlist(raw)
+#
 dict = readLines("data/08ASEC2018_Data_Dict_Full.txt", encoding="UTF-8")
 
 ### prepare dictionary object(s) for household, family, and person variables ###
