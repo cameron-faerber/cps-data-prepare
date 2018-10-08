@@ -1,0 +1,6351 @@
+2018 ANNUAL SOCIAL AND ECONOMIC (ASEC) 
+SUPPLEMENT DATA DICTIONARY
+
+
+HOUSEHOLD RECORD
+
+
+
+DATA       SIZE   BEGIN RANGE                  
+
+D HRECORD     1      1  (1:1)
+U All households
+V          1 .Household record
+
+D H_SEQ       5      2  (00001:99999)
+     Household sequence number
+V All households
+V     00001- .Household sequence number
+V     99999  .
+
+D HHPOS       2      7  (00:00)
+	Trailer portion of unique household ID. 00 for HH record. Same function in family record is field FFPOS (01-39). Same function in person record is PPPOS (41-79).
+
+D HUNITS      1      9  (1:5)
+	Item 78 - How many units in the structure
+U H_HHTYPE = 1
+V          1 .1 Unit
+V          2 .2 Units
+V          3 .3 - 4 Units
+V          4 .5 - 9 Units
+V          5 .10+ Units
+
+D HEFAMINC    2     10  (-1:16)
+	Family income
+	NOTE:  If a nonfamily household, income includes only that of householder.
+U All households
+V         -1 .Not in universe
+V         01 .Less than $5,000
+V         02 .$5,000 to $7,499
+V         03 .$7,500 to $9,999
+V         04 .$10,000 to $12,499
+V         05 .$12,500 to $14,999
+V         06 .$15,000 to $19,999
+V         07 .$20,000 to $24,999
+V         08 .$25,000 to $29,999
+V         09 .$30,000 to $34,999
+V         10 .$35,000 to $39,999
+V         11 .$40,000 to $49,999
+V         12 .$50,000 to $59,999
+V         13 .$60,000 to $74,999
+V         14 .$75,000 to $99,999
+V         15 .$100,000 to $149,999
+V         16 .$150,000 and over
+
+D H_RESPNM    2     12  (0:99)
+	Line number of household respondent
+V         -1 .Not in universe (non-interview)
+V         00 .Blank or impossible
+V      01-99 .Line number
+
+D H_YEAR      4     14  (0:2999)
+     Year of survey
+U All households
+V  1999-2999 .
+
+DATA        SIZE  BEGIN  RANGE
+
+D FILLER      2     18
+	Filler
+
+D H_HHTYPE    1     20  (1:3)
+	Type of household
+U All
+V          1 .Interview
+V          2 .Type A non-interview
+V          3 .Type B/C non-interview
+
+D H_NUMPER    2     21  (00:39)
+	Number of persons in household
+U H_HHTYPE = 1
+V         00 .Noninterview household
+V      01-39 .Number of persons in HHLD
+
+D HNUMFAM     2     23  (00:39)
+	Number of families in household
+U H_HHTYPE = 1
+V         00 .Noninterview household
+V      01-39 .Number of families in HHLD
+
+D H_TYPE      1     25  (0:9)
+	Household type
+U H_HHTYPE = 1
+V          0 .Non-interview household
+V          1 .Husband/wife primary family
+V            .(neither husband or wife in
+V            .Armed Forces)
+V          2 .Husband/wife primary family
+V            .(husband and/or wife in
+V            .Armed Forces)
+V          3 .Unmarried civilian male
+V            .primary family householder
+V          4 .Unmarried civilian female
+V            .primary family householder
+V          5 .Primary family household -
+V            .reference person in
+V            .Armed Forces and unmarried
+V          6 .Civilian male nonfamily
+V            .householder
+V          7 .Civilian female nonfamily
+V            .householder
+V          8 .Nonfamily householder 
+V            .household-reference person in 
+V            .Armed Forces
+V          9 .Group quarters
+
+D H_MONTH     2     26  (01:12)
+     Month of survey
+U All households
+V         03 .March
+
+D FILLER      1     28
+     Filler
+
+D H_MIS       1     29  (1:8)
+     Month in sample
+U All households
+V        1-8 .Month in sample
+
+D H_HHNUM     1     30  (0:8)
+     Household number
+U All households
+V          0 .Blank
+V        1-8 .Household number
+
+D H_LIVQRT    2     31  (01:12)
+     Item 4 - Type of living quarters  
+     (recode)
+U All households
+V    Housing unit
+V         01 .House, apt., flat
+V         02 .HU in nontransient hotel, etc.
+V         03 .HU, perm,  in trans. hotel,
+V            .motel, etc.
+V         04 .HU in rooming house
+V         05 .Mobile home or trailer with no
+V            .permanent room added
+V         06 .Mobile home or trailer with 1
+V            .or more perm rooms added
+V         07 .HU not specified above
+V    		Other Unit
+V         08 .Qtrs not hu in rooming or
+V            .boarding house
+V         09 .Unit not perm in trans. hotel,
+V            .motel, etc.
+V         10 .Tent or trailer site
+V         11 .Student quarters in college
+V            .dormitory
+V         12 .Other not HU
+
+D H_TYPEBC    2     33  (00:19)
+     Item 15 - Type B/C
+U H_HHTYPE = 3
+V         00 .Interviewed, or Type A
+V    TYPE B
+V         01 .Vacant - regular
+V         02 .Vacant - storage of HHLD
+V            .furniture
+V         03 .Temp occ by persons with URE
+V         04 .Unfit or to be demolished
+V         05 .Under construction, not ready
+V         06 .Converted to temp business or
+V            .storage
+V         07 .Occ by AF members or persons
+V            .under 15
+V         08 .Unocc tent or trailer site
+V         09 .Permit granted, construction
+V            .not started
+V         10 .Other
+V    Type C
+V         11 .Demolished
+V         12 .House or trailer moved
+V         13 .Outside segment
+V         14 .Converted to perm business
+V            .or storage
+V         15 .Merged
+V         16 .Condemned
+V         17 .Built after April 1, 1980
+V         18 .Unused line of listing sheet
+V         19 .Other
+
+D H_TENURE    1     35  (0:3)
+      Tenure
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Owned or being bought
+V          2 .Rent
+V          3 .No cash rent
+D H_TELHHD    1     36  (0:2)
+     Telephone in household
+U H_HHTYPE = 1
+V          0 .Not in universe (non-interview)
+V          1 .Yes
+V          2 .No
+
+D H_TELAVL    1     37  (0:2)
+     Telephone available
+U H_TELHHD = 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D H_TELINT    1     38  (0:2)
+     Telephone interview acceptable
+U H_TELAVL = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D GEREG       1     39  (1:4)
+     Region
+U All households
+V          1 .Northeast
+V          2 .Midwest
+V          3 .South
+V          4 .West
+
+D FILLER      2     40  
+     Filler
+
+D GESTFIPS    2     42 (01:56)
+     State FIPS code
+V      01-56 .State code
+
+D GTCBSA      5     44  (00000:79600)
+     Metropolitan CBSA FIPS CODE
+V       0000 .Non-met or not identified
+V     00460- .CBSA code
+V      79600 .
+
+D GTCO        3     49  (000:810)
+     FIPS County Code
+U All HHLD's in sample
+V        000 .Not identified
+V    001-810 .Specific county code
+V            .(See Appendix E)
+V            .Note:  This code must be
+V            .used in combination with
+V            .a State Code (GESTFIPS)
+V            .in order to uniquely
+V            .identify a county
+
+D GTCBSAST    1     52  (1:4)
+     Principal city/Balance status
+U All
+V          1 .Principal city
+V          2 .Balance of CBSA
+V          3 .Non CBSA
+V          4 .Not identified
+
+D GTMETSTA    1     53  (1:3)
+     Metropolitan status
+U All
+V          1 .Metropolitan
+V          2 .Non-metropolitan
+V          3 .Not identified
+
+D GTINDVPC    1     54  (0:4)
+     Individual Principal City Code
+V          0 .Not identified, non-met, or
+V            .not a principal city
+V        1-7 .(See Appendix E) Note:  
+V            .Whenever possible this code 
+V            .identifies specific principal 
+V            .cities in a CBSA that 
+V            .has multiple principal cities.  
+V            .This code must be used in 
+V            .combination with the CBSA 
+V            .FIPS Code GTCBSA in order 
+V            .to uniquely identify a 
+V            .specific city
+
+D GTCBSASZ    1     55  (0,2:7)
+     Metropolitan area (CBSA) size
+U All HHLD's in sample
+V          0 .Not identified or
+V            .nonmetropolitan
+V          2 .100,000 - 249,999
+V          3 .250,000 - 499,999
+V          4 .500,000 - 999,999
+V          5 .1,000,000 - 2,499,999
+V          6 .2,500,000 - 4,999,999
+V          7 .5,000,000+
+
+D GTCSA       3     56 (000:720)
+	Consolidated Statistical Area (CSA) FIPS Code
+V        000 .Non-met or not identified
+V    118-720 .CSA Code
+
+D FILLER      1     59
+     Filler
+
+*********************************************
+   Edited noncash household items     
+*********************************************
+D HUNDER15    2     60  (00:39)
+	Recode: Number of persons in household under age 15
+U ITEM 79 = 1
+V         00 .None
+V      01-39 .Number persons under 15
+
+D FILLER      6     62
+    Filler
+
+D HH5TO18     2     68  (00:39)
+	Recode: Item 82 - Number of persons in household age 5 to 18 excluding family heads and spouses
+V         00 .None
+V      01-39 .Number persons 5 to 18
+
+D HHOTLUN     1     70  (0:2)
+	Item 80 - During 20.. how many of the children in this household usually ate a complete lunch offered at school?
+U HH5TO18 = 1+
+V          0 .Not in universe
+V          1 .All or some
+V          2 .None
+
+D HHOTNO      1     71  (0:9)
+	Item 80 - Number of children in household who usually ate complete lunch.
+	Note:  If more than 9 children/persons present, a value of 9 does not necessarily mean "ALL."
+U HHOTLUN = 1
+V          0 .Not in universe
+V          1 .1 child
+V            ...
+V          9 .9 or more children
+
+D HFLUNCH     1     72  (0:2)
+	Item 83 - During 20.. how many of the children in this household received free or reduced price lunches because they qualified for the federal school lunch program?
+U HHOTLUN = 1
+V          0 .Not in universe
+V          1 .Some or all
+V          2 .None
+
+D HFLUNNO     1     73  (0:9)
+	Item 83 - Number receiving free or reduced price lunch
+	Note: If more than 9 children/persons present, a value of 9 does not necessarily mean "ALL."
+U HFLUNCH = 1
+V          0 .Not in universe
+V          1 .1
+V            ...
+V          9 .9 or more
+
+D HPUBLIC     1     74  (0:2)
+	Item 85 - Is this public housing, that is, is it owned by a local housing authority or other public agency?
+U HTENURE = 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HLORENT     1     75  (0:2)
+	Item 86 - Are you paying lower rent because the federal, state, or local government is paying part of the cost?
+U HPUBLIC = 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HFOODSP     1     76  (0:2)
+	Item 87 - Did anyone in this household get food stamps or use a food stamp benefit card at any time during 20..?
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HFOODNO     1     77  (0:9)
+	Item 88 - Which of the people now living here were covered by that food assistance during 20..?
+	Note: If more than 9 children/persons present, a value of 9 does not necessarily mean "ALL."
+U HFOODSP = 1
+V          0 .Not in universe
+V          1 .1
+V            ...
+V          9 .9 or more
+
+D FILLER      1     78
+	Filler
+
+D HFOODMO     2     79  (00:12)
+	Item 902 - How many months was food assistance received in 20..? 
+U HFOODSP = 1
+V         00 .Not in universe
+V         01 .1 month
+V            ...
+V         12 .12 Months
+
+D FILLER      4     81
+     Filler
+
+D HENGAST     1     85  (0:2)
+Item 93 – The gov’t has an energy assistance program, which helps pay heating and cooling costs. This assistance can be received directly by the household or it can be paid directly to the electric company, gas company, or fuel dealer.  In 20.., has this household received energy assistance from the federal, state, or local government?
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+          
+D HENGVAL     4     86  (0000:1999)
+     Item 94 - Altogether, how much energy
+     assistance has been received in 20..?
+U HENGAST = 1
+V       0000 .Not in universe
+V  0001-1999 .Energy assistance
+
+*********************************************
+   Household Income Recipiency and Values
+*********************************************
+
+*********************************************
+     Source of Income
+     Wages and Salaries   
+*********************************************
+
+D HINC_WS     1     90  (0:2)
+     Recode - Wage and Salary
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HWSVAL      7     91  (0000000:3899961)
+     Recode - HHLD income - Wages and 
+     Salaries
+U HINC_WS = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income                     
+     Self-Employment (Nonfarm)            
+*********************************************
+
+D HINC_SE     1     98  (0:2)
+U H_HHTYPE = 1
+     Recode - Own business self-employment
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HSEVAL      7     99  (-389961:3899961)
+     Recode - HHLD income - self employment
+     income
+U HINC_SE  = 1
+V    0000000 .None or not in universe
+V    Neg Amt .Income (loss)
+V    Pos Amt .Income
+
+*********************************************
+     Source of Income                     
+     Self-Employment farm                 
+*********************************************
+
+D HINC_FR     1    106  (0:2)
+     Recode - Farm self-employment
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HFRVAL      7    107  (-389961:3899961)
+     Recode - HHLD income - Farm income
+U HINC_FR = 1
+V    0000000 .None or not in universe
+V    Neg Amt .Income (loss)
+V    Pos Amt .Income
+
+*********************************************
+     Source of Income                     
+     Unemployment Compensation            
+*********************************************
+
+D HINC_UC     1    114  (0:2)
+     Recode - Unemployment compensation
+     benefits
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HUCVAL      7    115  (0000000:3899961)
+     Recode - HHLD income - Unemployment
+     compensation
+U HINC_UC = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income                     
+     Worker's Compensation                
+*********************************************
+
+D HINC_WC     1    122  (0:2)
+     Recode - Worker's compensation
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HWCVAL      7    123  (0000000:3899961)
+     Recode - HHLD income - Worker's
+     compensation
+U HINC_WC = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Social Security     
+*********************************************
+
+D HSS_YN      1    130  (0:2)
+     Recode - Social Security payments
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HSSVAL      7    131  (0000000:1169961)
+     Recode - HHLD income - Social Security
+U HSS_YN = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income                     
+     Supplemental Security                
+*********************************************
+
+D HSSI_YN     1    138  (0:2)
+     Recode - Supplemental Security benefits
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HSSIVAL     6    139  (000000:389961)
+     Recode - HHLD income - Supplemental
+     Security income
+U HSSI_YN = 1
+V     000000 .None
+V            .Dollar amount
+
+*********************************************
+     Source of Income                        
+     Public Assistance  or Welfare      
+*********************************************
+
+D HPAW_YN     1    145  (0:2)
+     Recode - Public Assistance
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HPAWVAL     6    146  (000000:779961)
+     Recode - HHLD income - Public
+     Assistance income
+U HPAW_YN = 1
+V     000000 .None
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Veterans' Benefits  
+*********************************************
+
+D HVET_YN     1    152  (0:2)
+     Recode - Veterans' Payments
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HVETVAL     7    153  (0000000:1169961)
+     Recode - HHLD income - Veteran Payments
+U HVET_YN = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Survivor's Income   
+*********************************************
+D HSUR_YN     1    160  (0:2)
+     Recode - Survivor Benefits
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HSURVAL     7    161  (0000000:3899961)
+     Recode - HHLD income - survivor income
+U HSUR_YN = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Disability           
+*********************************************
+
+D HDIS_YN     1    168  (0:2)
+     Recode - Disability benefits
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HDISVAL     7    169  (0000000:3899961)
+     Recode - HHLD income - Disability income
+U HDIS_YN = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Retirement Income   
+*********************************************
+
+D HRET_YN     1    176  (0:2)
+U H_HHTYPE = 1
+     Recode - Retirement payments
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+D HRETVAL     7    177  (0000000:3899961)
+     Recode - HHLD income - Retirement 
+     income
+U HRET_YN = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Interest           
+*********************************************
+
+D HINT_YN     1    184  (0:2)
+      Recode -interest payments
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HINTVAL     7    185  (0000000:3899961)
+     Recode - HHLD income - Interest income
+U HINT_YN = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Dividends          
+*********************************************
+
+D HDIV_YN     1    192  (0:2)
+      Recode - Dividend payments
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HDIVVAL     7    193  (0000000:3899961)
+     Recode - HHLD income - dividend income
+U HDIV_YN = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Rents
+*********************************************
+
+D HRNT_YN     1    200  (0:2)
+     Recode - Rental payments
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HRNTVAL     7    201  (-389961:3899961)
+     Recode - HHLD income - Rent income
+U HRNT_YN = 1
+V    0000000 .None or not in universe
+V   Negative .Dollar amount
+V   Positive .Dollar amount
+
+*********************************************
+     Source of Income
+     Education          
+*********************************************
+
+D HED_YN      1    208  (0:2)
+      Recode - Educational assistance
+      benefits
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+D HEDVAL      7    209  (0000000:3899961)
+     Recode - HHLD income - Education income
+U HED_YN = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Child Support      
+*********************************************
+
+D HCSP_YN     1    216  (0:2)
+      Recode - Child support payments
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HCSPVAL     7    217  (0000000:3899961)
+     Recode - HHLD income - child support
+U HCSP_YN = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+D FILLER      8    224
+     Filler
+
+*********************************************
+     Source of Income                       
+     Financial Assistance                   
+*********************************************
+
+D HFIN_YN     1    232  (0:2)
+      Recode - Financial assistance payments
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HFINVAL     7    233  (0000000:3899961)
+     Recode - HHLD income - Financial
+     assistance income
+U HFIN_YN = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Other Income       
+*********************************************
+
+D HOI_YN      1    240  (0:2)
+     Other income payments
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HOIVAL      7    241  (0000000:3899961)
+     Recode - HHLD income - Other income
+U HOI_YN = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Summary Household Income Recodes        
+*********************************************
+
+D HTOTVAL     8    248  (-389961:23399766)
+     Recode - Total household income
+U H_HHTYPE = 1
+V   00000000 .None or not in universe
+V    Neg Amt .Income (loss)
+V    Pos Amt .Income
+
+D HEARNVAL    8    256  (-389961:11699883)
+     Recode - Total household earnings
+U HINC_WS,HINC_SE or HINC_FR = 1
+V   00000000 .None or not in universe
+V    Neg Amt .Income (loss)
+V    Pos Amt .Income
+
+D HOTHVAL     8    264  (-389961:11699883)
+     All other types of income except 
+     HEARNVAL
+     Recode - Total other household income
+V   00000000 .None or not in universe
+V    Neg Amt .Income (loss)
+V    Pos Amt .Income
+
+D HHINC       2    272  (00:41)     
+U H_HHTYPE = 1
+      Recode -total household income
+V         00 .Not in universe
+V         01 .Under $2,500
+V         02 .$2,500 to $4,999
+V         03 .$5,000 to $7,499
+V         04 .$7,500 to $9,999
+V         05 .$10,000 to $12,499
+V         06 .$12,500 to $14,999
+V         07 .$15,000 to $17,499
+V         08 .$17,500 to $19,999
+V         09 .$20,000 to $22,499
+V         10 .$22,500 to $24,999
+V         11 .$25,000 to $27,499
+V         12 .$27,500 to $29,999
+V         13 .$30,000 to $32,499
+V         14 .$32,500 to $34,999
+V         15 .$35,000 to $37,499
+V         16 .$37,500 to $39,999
+V         17 .$40,000 to $42,499
+V         18 .$42,500 to $44,999
+V         19 .$45,000 to $47,499
+V         20 .$47,500 to $49,999
+V         21 .$50,000 to $52,499
+V         22 .$52,500 to $54,999
+V         23 .$55,000 to $57,499
+V         24 .$57,500 to $59,999
+V         25 .$60,000 to $62,499
+V         26 .$62,500 to $64,999
+V         27 .$65,000 to $67,499
+V         28 .$67,500 to $69,999
+V         29 .$70,000 to $72,499
+V         30 .$72,500 to $74,999
+V         31 .$75,000 to $77,499
+V         32 .$77,500 to $79,999
+V         33 .$80,000 to $82,499
+V         34 .$82,500 to $84,999
+V         35 .$85,000 to $87,499
+V         36 .$87,500 to $89,999
+V         37 .$90,000 to $92,499
+V         38 .$92,500 to $94,999
+V         39 .$95,000 to $97,499
+V         40 .$97,500 to $99,999
+V         41 .$100,000 and over
+
+*********************************************
+     Edited Health Insurance               
+*********************************************
+
+D HMCARE      1    274  (0:2)
+     Anyone in HHLD covered by Medicare
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HMCAID      1    275  (0:2)
+     Anyone in HHLD covered by Medicaid
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HCHAMP      1    276  (0:2)
+     VA or military health care
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HHI_YN      1    277  (0:2)
+     Anyone in HHLD have health insurance
+U H_HHTYPE = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+*********************************************
+     Household Recodes
+*********************************************
+
+D HHSTATUS    1    278  (0:3)
+     Recode - Household status
+U H_TYPE = 1:8
+V          0 .Not in universe (group
+V            .quarters)
+V          1 .Primary family
+V          2 .Nonfamily householder living
+V            .alone
+V          3 .Nonfamily householder living
+V            .with nonrelatives
+
+D HUNDER18    2    279  (00:39)
+     Recode - Number of persons in HHLD
+     under age 18
+U H_HHTYPE = 1
+V         00 .None
+V      01-39 .Number persons under 18
+
+D HTOP5PCT    1    281  (0:2)
+     Recode - Household income percentiles
+U H_HHTYPE = 1
+V          0 .Not in universe (group 
+V            .quarters)
+V          1 .In top 5 percent
+V          2 .Not in top 5 percent
+
+D HPCTCUT     2    282  (00:20)
+     Recode - HHLD income percentiles -
+     National rank
+U H_HHTYPE = 1
+V         00 .Not in universe (group 
+V            .quarters)
+V         01 .Lowest 5 percent
+V         02 .Second 5 percent
+V            ...
+V         20 .Top 5 percent
+
+D FILLER      3    284
+     Filler
+
+*********************************************
+     March Supplement Household Weight    
+*********************************************
+
+D HSUP_WGT    8    287  (00000000:99999999)
+     Final weight (2 implied decimal places)
+U H_HHTYPE = 1
+
+*********************************************
+     Allocation flags for basic CPS        
+*********************************************
+
+D H1TENURE    1    295  (0:4)
+V          0 .No change
+V          1 .Value to blank
+V          4 .Allocated
+
+D FILLER      1    296
+     Filler
+
+D H1LIVQRT    1    297  (0:7)
+V          0 .No change
+V          4 .Allocated
+V          7 .Blank to NA - no error
+
+D FILLER      1    298
+     Filler
+
+D H1TELHHD    1    299  (0:4)
+V          0 .No change
+V          1 .Value to blank
+V          4 .Allocated
+
+D H1TELAVL    1    300  (0:4)
+V          0 .No change
+V          1 .Value to blank
+V          4 .Allocated
+
+D H1TELINT    1    301  (0:4)
+V          0 .No change
+V          1 .Value to blank
+V          4 .Allocated
+
+*********************************************
+     Allocation flags for supplement         
+     household items                         
+*********************************************
+
+D FILLER      6    302  (0:1)
+     Filler
+
+D I_HHOTLU    1    308  (0:1)
+V          0 .No change
+V          1 .Allocated
+
+D I_HHOTNO    1    309  (0:1)
+V          0 .No change
+V          1 .Allocated
+
+D I_HFLUNC    1    310  (0:1)
+V          0 .No change
+V          1 .Allocated
+
+D I_HFLUNN    1    311  (0:1)
+V          0 .No change
+V          1 .Allocated
+
+D I_HPUBLI    1    312  (0:1)
+V          0 .No change
+V          1 .Allocated
+
+D I_HLOREN    1    313  (0:1)
+V          0 .No change
+V          1 .Allocated
+
+D I_HFOODS    1    314  (0:1)
+V          0 .No change
+V          1 .Allocated
+
+D I_HFDVAL    1    315  (0:1)
+V          0 .No change
+V          1 .Allocated
+
+D I_HFOODN    1    316  (0:1)
+V          0 .No change
+V          1 .Allocated
+
+D I_HFOODM    1    317  (0:1)
+V          0 .No change
+V          1 .Allocated
+
+D I_HENGAS    1    318  (0:1)
+V          0 .No change
+V          1 .Allocated
+
+D I_HENGVA    1    319  (0:1)
+V          0 .No change
+V          1 .Allocated
+
+D H_IDNUM2    5    320
+     Second part of household id number.
+     Same as characters 16-20 of PERIDNUM
+     Must be used with H_IDNUM1 to uniquely
+     id households.
+U ALL
+
+D FILLER      7    325
+     Filler
+
+*********************************************
+     New fields in 1992 from after-tax       
+     processing                              
+*********************************************
+
+D PROP_TAX    5    332  (00000:99997)
+     Annual property taxes
+V      00000 .None
+V    00001-  .Dollar amount
+V      99997 .
+
+D HOUSRET     5    337  (-9999:25000)
+     Return to home equity
+V      00000 .None
+V    -9999 - .Dollar amount
+V      25000 .
+
+*********************************************
+     New uncollapsed H_TYPE from new CPS     
+     questionnaire                           
+*********************************************
+
+D HRHTYPE     2    342  (00:10)
+     Household type
+U H_HHTYPE = 1
+V         00 .Non-interview household
+V         01 .Husband/wife primary family
+V            .(neither husband or wife in
+V            .Armed Forces)
+V         02 .Husband/wife primary family
+V            .(husband and/or
+V            .wife in Armed Forces)
+V         03 .Unmarried civilian male 
+V            .primary family householder
+V         04 .Unmarried civilian female
+V            .primary family householder
+V         05 .Primary family household -
+V            .reference person in
+V            .Armed Forces and unmarried
+V         06 .Civilian male nonfamily
+V            .householder
+V         07 .Civilian female nonfamily
+V            .householder
+V         08 .Nonfamily householder
+V            .household - reference
+V            .person in Armed Forces
+V         09 .Group quarters with actual
+V            .families  (This is new in 1994)
+V         10 .Group quarters with secondary
+V            .individuals only
+
+D H_IDNUM1    15    344
+     First part of household id number.  
+     Same as characters 1-15 of PERIDNUM.
+     Must be used with H_IDNUM2 to uniquely
+     id households.
+U ALL
+
+D I_HUNITS    1    359  (0:1)
+     Allocation flag for HUNITS
+V          0 .No change
+V          1 .Allocated
+
+D FILLER      1    360
+     Filler
+
+*********************************************
+     NEW HOUSEHOLD WELFARE REFORM ITEMS   
+*********************************************
+
+D FILLER      1    361  (0:2)
+     Filler
+
+D FILLER      2    362  (0:16)
+     Filler
+
+D FILLER      1    364  (0:2)
+     Filler
+
+D FILLER      2    365  (0:16)
+     Filler
+
+D HRPAIDCC    1    367  (0:2)
+     DID (YOU/ANYONE IN THIS HOUSEHOLD) PAY
+     FOR THE CARE OF (YOUR/THEIR) (CHILD/
+     CHILDREN) WHILE THEY WORKED LAST YEAR?
+     (INCLUDE PRESCHOOL AND NURSERY SCHOOL;
+     EXCLUDE KINDERGARTEN OR GRADE/
+     ELEMENTARY SCHOOL)?
+V          0 .NIU
+V          1 .YES
+V          2 .NO
+
+********************************************
+     EDITED HOUSEHOLD VARIABLES FOR NEW    
+     SUPPLEMENT EDITS                      
+********************************************
+
+D HPROP_VAL   8    368  (0:99999999)
+     ESTIMATE OF CURRENT PROPERTY VALUE
+U H_TENURE = 1
+V   00000000 .Not in universe
+V  00000001- .Dollar value
+V  99999999  .
+
+D THPROP_VAL  1    376  (0:1)
+     Topcode flag for HPROP_VAL
+U H_HHTYPE = 1
+V          0 .Not swapped
+V          1 .Topcoded
+
+D I_PROPVAL  1    377  (0:1)
+     Allocation flag for HPROP_VAL
+U H_HHTYPE = 1
+V          0 .No allocation
+V          1 .Allocated
+
+D FILLER      5    378 
+     Filler
+
+D HRNUMWIC    2    383  (0:16)
+	NUMBER OF PEOPLE IN THE HOUSEHOLD RECEIVING WIC (1-16).
+
+D FILLER      1    385  (0:2)
+     Filler
+
+D HRWICYN     1    386  (0:2)
+     AT ANY TIME DURING 20.., , (WERE YOU/WAS
+     ANYONE IN THIS HOUSEHOLD) ON WIC, THE
+     WOMEN, INFANTS, AND CHILDREN NUTRITION
+     PROGRAM?
+V          0 .NIU
+V          1 .YES
+V          2 .NO
+
+D HFDVAL      5    387  (00000:24999)
+	Item 90 - What was the (monthly) value of the food assistance received in 20..?
+U HFOODSP = 1
+V       0000 .Not in universe
+V  0001-9999 .Food stamps value
+
+D TCARE_VAL   1    392  (0:1)
+	Topcode flag for CARE_VAL
+V          0 .No change
+V          1 .Topcoded
+
+D CARE_VAL    6    393  (-1:999999)
+	Annual amount paid for child care by household members
+U 	HRPAIDCC=1
+V       -1,0 .Not in universe
+V   1-999999 .Amount in dollars
+
+D I_CAREVAL   1    399  (0:1)
+	Allocation flag for CARE_VAL
+V          0 .No change
+V          1 .Allocated
+
+D HPRES_MORT  1    400  (0:2)
+	Presence of home mortgage (respondent answers yes to hmort_yn or hsmort_yn)
+V          0. Not in universe
+V          1. Yes
+V          2. No
+
+D FILLER    676    401
+
+
+
+
+FAMILY RECORD
+
+
+D FRECORD     1      1  (2:2)
+U All families
+V          2 .Family record
+
+D FH_SEQ      5      2  (00001:99999)
+     Household sequence number
+     Matches H_SEQ for same household
+U All families
+V 00001-99999.Household sequence number
+
+D FFPOS       2      7  (01:39)
+     Unique family identifier
+     This field plus FH_SEQ results in a
+     unique family number for the file.
+     Same function in household record is
+     field HHPOS (00).
+     Same function in person record is PPPOS
+     (41-79).
+U All families
+V      01-39 .Index for
+V            .family identifier
+
+D FKIND       1      9  (1:3)
+     Kind of family
+U All families
+V          1 .Husband-wife family
+V          2 .Male reference person
+V          3 .Female reference person
+
+D FTYPE       1     10  (1:5)
+     Family type
+U All families
+V          1 .Primary family
+V          2 .Nonfamily householder
+V          3 .Related subfamily
+V          4 .Unrelated subfamily
+V          5 .Secondary individual
+
+D FPERSONS    2     11  (01:39)
+     Number of persons in family
+     Primary families include related
+     subfamily members
+U All families
+V      01-39 .Number of persons
+
+D FHEADIDX    2     13  (01:39)
+     Index to person record of family head
+U All families
+V      01-39 .Index (roster position) for
+V            .reference person
+
+D FWIFEIDX    2     15  (00:39)
+     Index to person record of family wife
+U F_KIND = 1
+V         00 .No wife
+V      01-39 .Index (roster position) for
+V            .wife
+
+D FHUSBIDX    2     17  (00:39)
+     Index to person record of family
+     husband
+U F_KIND = 1
+V         00 .No husband
+V      01-39 .Index (roster position) for
+V            .husband
+
+D FSPOUIDX    2     19  (00:39)
+     Index to person record of family spouse
+U F_KIND = 1
+V         00 .No spouse
+V      01-39 .Index (roster position) for
+V            .spouse
+
+D FLASTIDX    2     21  (01:39)
+     Index to person record of last
+     member of family.  All persons from
+     FHEADIDX thru FLASTIDX are members of
+     this family.  (Primary family
+     includes related subfamily members.)
+U All families
+V      01-39 .Index (roster position) for
+V            .last family member
+
+D FMLASIDX    2     23  (01:39)
+     Index to person record of last
+     member of family.  All persons from
+     FHEADIDX thru FMLASIDX are
+     members of this family.  (Primary
+     family excludes subfamily members.)
+U All families
+V      01-39 .Index (roster position) for
+V            .last family member
+
+
+D FOWNU6      1     25  (0:6)
+     Own children in family under 6
+V          0 .None, not in universe
+V          1 .1
+V          2 .2
+V            ...
+V          6 .6+
+
+D FILLER      1     26
+     Filler
+
+D FOWNU18     1     27  (0:9)
+     Number of own never married children
+     under 18
+     Primary family includes own children
+     in related subfamily even if the child
+     is the head of the subfamily.
+U All families
+V          0 .None, not in universe
+V          1 .1
+V            ...
+V          9 .9 or more
+
+D FRELU6      1     28  (0:6)
+     Related persons in family under 6
+U All families
+V          0 .None, not in universe
+V          1 .1
+V          2 .2
+V            ...
+V          6 .6+
+
+D FRELU18     1     29  (0:9)
+     Related persons in family under 18
+U All families
+V          0 .None, not in universe
+V          1 .1
+V          2 .2
+V            ...
+V          9 .9+
+
+D FPCTCUT     2     30  (00:20)
+     Income percentiles
+     Primary families only
+U All families
+V         00 .NIU (FTYPE=2+)
+V         01 .Lowest 5 percent
+V         02 .Second 5 percent
+V            ...
+V         20 .Top 5 percent
+
+D FPOVCUT     5     32  (00000:40000)
+     Low income cutoff dollar amount
+     If FTYPE = 3 then value comes from
+     primary family
+
+D FAMLIS      1     37  (1:4)
+     Ratio of family income to low-income
+     level
+     If FTYPE = 3 then value comes from
+     primary family
+V          1 .Below low-income level
+V          2 .100 - 124 percent of the low-
+V            .income level
+V          3 .125 - 149 percent of the low-
+V            .income level
+V          4 .150 percent and above the
+V            .low-income level
+
+D POVLL       2     38  (01:14)
+     Ratio of family income to low-income
+     Level.
+     If FTYPE = 3 then value comes from
+     primary family
+V         01 .Under .50
+V         02 ..50 to .74
+V         03 ..75 to .99
+V         04 .1.00 to 1.24
+V         05 .1.25 to 1.49
+V         06 .1.50 to 1.74
+V         07 .1.75 to 1.99
+V         08 .2.00 to 2.49
+V         09 .2.50 to 2.99
+V         10 .3.00 to 3.49
+V         11 .3.50 to 3.99
+V         12 .4.00 to 4.49
+V         13 .4.50 to 4.99
+V         14 .5.00 and over
+
+D FRSPOV      2     40  (00:14)
+     Ratio of related subfamily income to
+     low-income level (care should be
+     exercised when using this data as the
+     related subfamilies are a part of the
+     primary family and usually their
+     poverty status comes from the
+     primary family)
+U F_TYPE = 3
+V         00 .Not in universe
+V         01 .Under .50
+V         02 ..50 to .74
+V         03 ..75 to .99
+V         04 .1.00 to 1.24
+V         05 .1.25 to 1.49
+V         06 .1.50 to 1.74
+V         07 .1.75 to 1.99
+V         08 .2.00 to 2.49
+V         09 .2.50 to 2.99
+V         10 .3.00 to 3.49
+V         11 .3.50 to 3.99
+V         12 .4.00 to 4.49
+V         13 .4.50 to 4.99
+V         14 .5.00 and over
+
+D FRSPPCT     5     42  (00000:40000)
+     Low income cutoff dollar amount of
+     related subfamily (care should be
+     exercised when using these data as the
+     related subfamilies are a part of the
+     primary family and usually their poverty
+     status comes from the primary family)
+U F_TYPE = 3
+V    00000-  .Not in related subfamilies
+       40000 .
+
+*********************************************
+   Family Income Recipiency and Values     
+*********************************************
+
+*********************************************
+     Source of Income
+     Wages and Salaries 
+*********************************************
+
+D FINC_WS     1     47  (1:2)
+     Wage and salary
+V          1 .Yes
+V          2 .No
+
+D FWSVAL      7     48  (0000000:3899961)
+     Family income - wages and salaries
+U FINC_WS = 1
+V            .Dollar amount
+
+*********************************************
+     Source of Income                       
+     Self-Employment (Nonfarm)              
+*********************************************
+
+D FINC_SE     1     55  (1:2)
+     Own business self-employment
+U All families
+V          1 .Yes
+V          2 .No
+
+D FSEVAL      7     56  (-389961:3899961)
+     Family income - self-employment income
+U FINC_SE = 1
+V    0000000 .None or not in universe
+V    Neg Amt .Income (loss)
+V    Pos Amt .Income
+
+*********************************************
+     Source of Income                       
+     Self-Employment Farm                   
+*********************************************
+
+D FINC_FR     1     63  (1:2)
+     Farm self-employment
+U All families
+V          1 .Yes
+V          2 .No
+
+D FFRVAL      7     64  (-389961:3899961)
+     Family income - Farm income
+U FINC_FR = 1
+V    0000000 .None or not in universe
+V    Neg Amt .Income (loss)
+V    Pos Amt .Income
+
+*********************************************
+     Source of Income                       
+     Unemployment Compensation              
+*********************************************
+
+D FINC_UC     1     71  (1:2)
+     Unemployment compensation
+U All families
+V          1 .Yes
+V          2 .No
+D FUCVAL      7     72  (0000000:3899961)
+     Family income - Unemployment
+     compensation
+U FINC_UC = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income                       
+     Worker's Compensation                  
+*********************************************
+
+D FINC_WC     1     79  (1:2)
+     Worker's compensation
+U All families
+V          1 .Yes
+V          2 .No
+
+D FWCVAL      7     80  (0000000:3899961)
+     Family income - Worker's compensation
+U FINC_WC = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Social Security    
+*********************************************
+
+D FINC_SS     1     87  (1:2)
+     Social Security Benefits
+U All families
+V          1 .Yes
+V          2 .No
+
+D FSSVAL      7     88  (0000000:1169961)
+     Family income - Social Security
+U FINC_SS = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income                       
+     Supplemental Security                  
+*********************************************
+
+D FINC_SSI    1     95  (1:2)
+     Supplemental Security Benefits
+U All families
+V          1 .Yes
+V          2 .No
+
+D FSSIVAL     6     96  (000000:389961)
+     Family income - Supplemental Security
+     Income
+U FINC_SSI = 1
+V          0 .None
+V            .Dollar amount
+
+*********************************************
+     Source of Income                       
+     Public Assistance or Welfare           
+*********************************************
+
+D FINC_PAW    1    102  (1:2)
+     Public assistance or welfare benefits
+U All families
+V          1 .Yes
+V          2 .No
+
+D FPAWVAL     6    103  (000000:779961)
+     Family income - public assistance 
+     income
+U FINC_PAW = 1
+V      00000 .None
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Veterans' Benefits 
+*********************************************
+
+D FINC_VET    1    109  (1:2)
+     Veterans' Benefits
+U All families
+V          1 .Yes
+V          2 .No
+
+D FVETVAL     7    110  (0000000:1169961)
+     Family income - veteran payments
+U FINC_VET = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Survivor's income  
+*********************************************
+
+D FINC_SUR    1    117  (1:2)
+     Survivor's payments
+U All families
+V          1 .Yes
+V          2 .No
+
+D FSURVAL     7    118  (0000000:3899961)
+     Family income - Survivor income
+U FINC_SUR = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Disability         
+*********************************************
+
+D FINC_DIS    1    125  (1:2)
+     Disability payments
+U All families
+V          1 .Yes
+V          2 .No
+
+D FDISVAL     7    126  (0000000:3899961)
+     Family income - Disability income
+U FINC_DIS = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Retirement Income  
+*********************************************
+
+D FINC_RET    1    133  (1:2)
+     Retirement payments
+U All families
+V          1 .Yes
+V          2 .No
+
+D FRETVAL     7    134  (0000000:3899961)
+     Family income - Retirement income
+U FINC_RET = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Interest           
+*********************************************
+
+D FINC_INT    1    141  (1:2)
+     Interest payments
+U All families
+V          1 .Yes
+V          2 .No
+
+D FINTVAL     7    142  (0000000:3899961)
+     Family income - Interest income
+U FINC_INT = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Dividends          
+*********************************************
+
+D FINC_DIV    1    149  (1:2)
+     Dividend payments
+U All families
+V          1 .Yes
+V          2 .No
+
+D FDIVVAL     7    150  (0000000:3899961)
+     Family income - Dividend income
+U FINC_DIV = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Rents              
+*********************************************
+
+D FINC_RNT    1    157  (1:2)
+     Rental payments
+U All families
+V          1 .Yes
+V          2 .No
+
+D FRNTVAL     7    158  (-389961:3899961)
+     Family income - Rental income
+U FINC_RNT = 1
+V    0000000 .None or not in universe
+V            .Negative dollar amount
+V            .Positive dollar amount
+
+*********************************************
+     Source of Income
+     Education          
+*********************************************
+D FINC_ED     1    165  (1:2)
+     Education benefits
+U All families
+V          1 .Yes
+V          2 .No
+
+D FEDVAL      7    166  (0000000:3899961)
+     Family income - Education income
+U FINC_ED = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Child support      
+*********************************************
+
+D FINC_CSP    1    173  (1:2)
+     Child support payments
+U All families
+V          1 .Yes
+V          2 .No
+
+D FCSPVAL     7    174  (0000000:3899961)
+     Family income - Child support
+U FINC_CSP = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+D FILLER      8    181
+     Filler
+
+*********************************************
+     Source of Income                       
+     Financial Assistance                   
+*********************************************
+
+D FINC_FIN    1    189  (1:2)
+     Financial assistance payments
+U All families
+V          1 .Yes
+V          2 .No
+
+D FFINVAL     7    190  (0000000:3899961)
+     Family income - Financial assistance
+     income
+U FINC_FIN = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+     Source of Income
+     Other income       
+*********************************************
+
+D FINC_OI     1    197  (1:2)
+     Other income payments
+U All families
+V          1 .Yes
+V          2 .No
+
+D FOIVAL      7    198  (0000000:3899961)
+     Family income - Other income
+U FINC=OI = 1
+V    0000000 .None or not in universe
+V            .Dollar amount
+
+*********************************************
+   Family Summary Income Values and Recodes
+*********************************************
+D FTOTVAL     8    205  (-389961:23399766)
+     Total family income
+U All families
+V   00000000 .None or not in universe
+V    Neg Amt .Income (loss)
+V    Pos Amt .Income
+
+D FEARNVAL    8    213  (-389961:11699883)
+     Total family earnings
+U FINC_WS, FINC_SE OR FINC_FR = 1
+V   00000000 .None or not in universe
+V    Neg Amt .Income (loss)
+V    Pos Amt .Income
+
+D FOTHVAL     8    221  (-389961:11699883)
+     Total other family income
+U All other types of income except HEARNVAL
+V   00000000 .None
+V    Neg Amt .Income (loss)
+V    Pos Amt .Income
+
+D FTOT_R      2    229  (01:41)
+     Total family income recode
+U All families
+V         01 .Under $2,500
+V         02 .$2,500 to $4,999
+V         03 .$5,000 to $7,499
+V         04 .$7,500 to $9,999
+V         05 .$10,000 to $12,499
+V         06 .$12,500 to $14,999
+V         07 .$15,000 to $17,499
+V         08 .$17,500 to $19,999
+V         09 .$20,000 to $22,499
+V         10 .$22,500 to $24,999
+V         11 .$25,000 to $27,499
+V         12 .$27,500 to $29,999
+V         13 .$30,000 to $32,499
+V         14 .$32,500 to $34,999
+V         15 .$35,000 to $37,499
+V         16 .$37,500 to $39,999
+V         17 .$40,000 to $42,499
+V         18 .$42,500 to $44,999
+V         19 .$45,000 to $47,499
+V         20 .$47,500 to $49,999
+V         21 .$50,000 to $52,499
+V         22 .$52,500 to $54,999
+V         23 .$55,000 to $57,499
+V         24 .$57,500 to $59,999
+V         25 .$60,000 to $62,499
+V         26 .$62,500 to $64,999
+V         27 .$65,000 to $67,499
+V         28 .$67,500 to $69,999
+V         29 .$70,000 to $72,499
+V         30 .$72,500 to $74,999
+V         31 .$75,000 to $77,499
+V         32 .$77,500 to $79,999
+V         33 .$80,000 to $82,499
+V         34 .$82,500 to $84,999
+V         35 .$85,000 to $87,499
+V         36 .$87,500 to $89,999
+V         37 .$90,000 to $92,499
+V         38 .$92,500 to $94,999
+V         39 .$95,000 to $97,499
+V         40 .$97,500 to $99,999
+V         41 .$100,000 and over
+
+D FSPANISH    1    231  (1:2)
+     Reference person or spouse of Spanish
+     origin
+U All families
+V          1 .Yes
+V          2 .No
+
+D FILLER      1    232
+     Filler
+
+*********************************************
+   March Supplement Family Weight         
+*********************************************
+D FSUP_WGT    8    233  (00000000:99999999)
+     Householder or reference person weight
+     (2 implied decimal)
+U All families
+V    000000- .(2 implied decimal places)
+      999999 .
+
+D FFPOSOLD    2    241
+     Trailer portion of unique household ID.
+     00 for HH record.  Same function in
+     Family record is field FFPOSOLD
+     (41-79).  Same function in Person
+     record is PPPOSOLD (01-39)
+U All families
+
+*********************************************
+   Family Noncash Benefit Valuation Fields   
+   New in 1992                     
+*********************************************
+D F_MV_FS     5    243  (0:24999)
+     Family market value of food stamps
+V          0 .None
+V            .Dollar amount
+
+D F_MV_SL     4    248  (0:9999)
+     Family market value of school lunch
+V          0 .None
+V            .Dollar amount
+
+D FILLER    20    252
+     Filler
+
+*********************************************
+   Family Medical Expenditure Items 
+   New in 2011
+*********************************************
+D FHIP_VAL    7    272  (0:9999999)
+    Total family (primary family including 
+    related subfamilies) payments for health 
+    insurance premiums
+V          0 .Not in Universe
+V            .Dollar amount
+
+D FMOOP       7    279  (0:9999999)
+    Total family (primary family including 
+    related subfamilies) medical out of 
+    pocket payments
+V          0 .Not in Universe
+V            .Dollar amount
+
+D FOTC_VAL    6    286  (0:999999)
+    Total family spending on over-the-counter  
+    health related products
+V          0 . Not in Universe
+V            .Dollar amount
+
+D FMED_VAL    7    292  (0:9999999)
+    Total family spending on medical care and 
+    medical equipment (excluding OTC items)
+V          0 .Not in Universe
+V            .Dollar amount
+
+D I_FHIPVAL   1    299  (0:1)
+     Allocation flag for FHIP_VAL
+V          0 .No change
+V          1 .Allocated
+
+D FILLER    777    300
+     Filler
+
+
+
+PERSON RECORD
+
+
+D PRECORD     1      1  (3:3)
+V          3 .Person record
+
+D PH_SEQ      5      2  (00001:99999)
+     Household seq number
+U All
+V   000001-  .Household sequence number
+V      99999 .
+
+D PPPOS       2      7  (41:79)
+     Trailer portion of unique household ID.
+     00 for HH record.  Same function in
+     family record is field FFPOS (01-39)
+     Same function in person record is
+     PPPOS (41-79)
+
+D PPPOSOLD    2      9  (01:39)
+     Trailer portion of unique household id.
+     00 for HH record.
+     Same function in family record is field
+     FFPOSOLD (41-79)
+     Same function in person record is
+     PPPOSOLD (01-39)
+
+D A_LINENO    2     11  (01:39)
+     Item 18a - Line number
+U All
+V      01-39 .Line number
+
+D A_PARENT    2     13  (00:39)
+     Item 18c - Parent's line number
+U All
+V         00 .None
+V      01-39 .Parent's line number
+
+D A_EXPRRP    2     15  (01:14)
+     Expanded relationship code
+V         01 .Reference person with relatives
+V         02 .Reference person without
+V            .relatives
+V         03 .Husband
+V         04 .Wife
+V         05 .Own child
+V         07 .Grandchild
+V         08 .Parent
+V         09 .Brother/sister
+V         10 .Other relative
+V         11 .Foster child
+V         12 .Nonrelative with relatives
+V         13 .Partner/roommate
+V         14 .Nonrelative without relatives
+
+D PERRP       2     17  (1:18)
+     Expanded relationship categories
+U All persons
+V         01 .Reference person w/rels.
+V         02 .Reference person w/o rels.
+V         03 .Spouse
+V         04 .Child
+V         05 .Grandchild
+V         06 .Parent
+V         07 .Brother/sister
+V         08 .Other rel. of ref. person
+V         09 .Foster child
+V         10 .Nonrel. of ref. person w/rels.
+V         11 .Not used
+V         12 .Nonrel. of ref. person w/o
+V            . rels.
+V         13 .Unmarried partner w/rels.
+V         14 .Unmarried partner w/o rels.
+V         15 .Housemate/roommate w/rels.
+V         16 .Housemate/roommate w/o rels.
+V         17 .Roomer/boarder w/rels.
+V         18 .Roomer/boarder w/o rels.
+
+D A_AGE       2     19  (00:85)
+     Item 18d - Age
+U All
+V      00-79 .0-79 years of age
+V         80 .80-84 years of age
+V         85 .85+ years of age
+
+D A_MARITL    1     21  (1:7)
+     Item 18e - Marital status
+U All
+V          1 .Married - civilian spouse
+V            .present
+V          2 .Married - AF spouse present
+V          3 .Married - spouse absent (exc.
+V            .separated)
+V          4 .Widowed
+V          5 .Divorced
+V          6 .Separated
+V          7 .Never married
+
+D A_SPOUSE    2     22  (00:39)
+     Item 18f - Spouse's line number
+U All
+V         00 .None or children
+V      01-39 .Spouse's line number
+
+D A_SEX       1     24  (1:2)
+     Item 18g - Sex
+U All
+V          1 .Male
+V          2 .Female
+
+D A_HGA       2     25  (00:46)
+     Item 18h - Educational attainment
+U All
+V         00 .Children
+V         31 .Less than 1st grade
+V         32 .1st,2nd,3rd,or 4th grade
+V         33 .5th or 6th grade
+V         34 .7th and 8th grade
+V         35 .9th grade
+V         36 .10th grade
+V         37 .11th grade
+V         38 .12th grade no diploma
+V         39 .High school graduate - high
+V            .school diploma or equivalent
+V         40 .Some college but no degree
+V         41 .Associate degree in college -
+V            .occupation/vocation program
+V         42 .Associate degree in college -
+V            .academic program
+V         43 .Bachelor's degree (for
+V            .example: BA,AB,BS)
+V         44 .Master's degree (for
+V            .example: MA,MS,MENG,MED,
+V            .MSW, MBA)
+V         45 .Professional school degree (for
+V            .example: MD,DDS,DVM,LLB,JD)
+V         46 .Doctorate degree (for
+V            .example: PHD,EDD)
+
+D PRDTRACE    2     27  (01:26)
+     Race
+U All
+V         01 .White only
+V         02 .Black only
+V         03 .American Indian,
+V            .Alaskan Native only (AI)
+V         04 .Asian only
+V         05 .Hawaiian/Pacific Islander
+V            .only (HP)
+V         06 .White-Black
+V         07 .White-AI
+V         08 .White-Asian
+V         09 .White-HP
+V         10 .Black-AI
+V         11 .Black-Asian
+V         12 .Black-HP
+V         13 .AI-Asian
+V         14 .AI-HP                    
+V         15 .Asian-HP                 
+V         16 .White-Black-AI           
+V         17 .White-Black-Asian        
+V         18 .White-Black-HP           
+V         19 .White-AI-Asian           
+V         20 .White-AI-HP              
+V         21 .White-Asian-HP           
+V         22 .Black-AI-Asian           
+V         23 .White-Black-AI-Asian     
+V         24 .White-AI-Asian-HP        
+V         25 .Other 3 race comb.       
+V         26 .Other 4 or 5 race comb.  
+
+D P_STAT      1     29  (1:3)
+     Status of person identifier
+V          1 .Civilian 15+
+V          2 .Armed Forces
+V          3 .Children 0 - 14
+
+D PRPERTYP    1    30  (1:3)
+     Type of person record recode
+V          1 .Child household member
+V          2 .Adult civilian household member
+V          3 .Adult Armed Forces household
+V            .member
+
+
+D PEHSPNON    1     31  (1:2)
+     Are you Spanish, Hispanic, or Latino?
+U All
+V          1 .Yes
+V          2 .No
+
+D PRDTHSP     1     32  (1:5)
+     Detailed Hispanic recode
+U PEHSPNON = 1
+V          0 .Not in universe
+V          1 .Mexican
+V          2 .Puerto Rican
+V          3 .Cuban
+V          4 .Dominican
+V          5 .Salvadoran
+V          6 .Central American, (exc. Salv)
+V          7 .South American
+V          8 .Other Hispanic
+
+D A_FAMNUM    2     33  (00:19)
+     Family number
+U All
+V         00 .Not a family member
+V         01 .Primary family member only
+V      02-19 .Subfamily member
+
+D A_FAMTYP    1     35  (1:5)
+     Family type
+U All
+V          1 .Primary family
+V          2 .Nonfamily householder
+V          3 .Related subfamily
+V          4 .Unrelated subfamily
+V          5 .Secondary individual
+
+D A_FAMREL    1     36  (0:4)
+     Family relationship
+U All
+V          0 .Not a family member
+V          1 .Reference person
+V          2 .Spouse
+V          3 .Child
+V          4 .Other relative (primary
+V            .family
+
+D A_PFREL     1     37  (0:5)
+     Primary family relationship
+U All
+V          0 .Not in primary family
+V          1 .Husband
+V          2 .Wife
+V          3 .Own child
+V          4 .Other relative
+V          5 .Unmarried reference person
+
+D HHDREL      1     38  (0:8)
+     Detailed household summary
+V    In household:
+V          1 .Householder
+V          2 .Spouse of householder
+V    Child of householder:
+V          3 .Under 18 years, single (never
+V            .married)
+V          4 .Under 18 years, ever married
+V          5 .18 years and over
+V    Other household members:
+V          6 .Other relative of householder
+V          7 .Nonrelative of householder
+V    In group quarters:
+V          8 .Secondary individual
+
+D FAMREL      2     39  (01:11)
+     Family relationship
+V    Primary and unrelated subfamily only
+V         01 .Reference person of family
+V         02 .Spouse of reference person
+V    Child of reference person:
+V         03 .Under 18 years, single (never
+V            .married)
+V         04 .Under 18 years, ever married
+V         05 .18 years and over
+V    Grandchild of reference person:
+V         06 .Grandchild of reference person
+V    Other relative of family of reference
+V    person:
+V         07 .Under 18 years, single (never
+V            .married)
+V         08 .Under 18 years, ever married
+V         09 .18 years and over
+V    Not in a family:
+V      Unrelated individual:
+V         10 .Nonfamily householder
+V         11 .Secondary individual
+
+D HHDFMX      2     41  (01:51)
+     Detailed household and family status
+     In household:
+V      In primary family:
+V         01 .Householder
+V         02 .Spouse of householder
+V    Child of householder:
+V      Under 18, single (never married):
+V         03 .Reference person of subfamily
+V         04 .Not in a subfamily
+V      Under 18, ever-married:
+V         05 .Reference person of subfamily
+V         06 .Spouse of subfamily reference
+V            .person
+V         07 .Not in a subfamily
+V      18 years and over, single (never
+V      married):
+V         08 .Head of a subfamily
+V         09 .Not in a subfamily
+V      18 years and over, ever-married:
+V         10 .Reference person of subfamily
+V         11 .Spouse of subfamily reference
+V            .person
+V         12 .Not in a subfamily
+V      13-22 .Not used
+V    Grandchild of householder:
+V      Under 18, single (never married):
+V         23 .Reference person of subfamily
+V         24 .Child of a subfamily
+V         25 .Not in a subfamily
+V      Under 18, ever-married:
+V         26 .Reference person of subfamily
+V         27 .Spouse of subfamily reference
+V            .person
+V         28 .Not used
+V         29 .Not in a subfamily
+V      18 years and over, single (never
+V      married):
+V         30 .Reference person of a subfamily
+V         31 .Not in a subfamily
+V      18 years and over, ever-married:
+V         32 .Reference person of subfamily
+V         33 .Spouse of subfamily reference
+V            .person
+V         34 .Not in a subfamily
+V    Other relative of householder:
+V      Under 18, single (never married):
+V         35 .Reference person of subfamily
+V         36 .Child of subfamily reference
+V            .person
+V         37 .Not in a subfamily
+V      Under 18, ever-married:
+V         38 .Reference person of subfamily
+V         39 .Spouse of subfamily reference
+V            .person
+V         40 .Not in a subfamily
+V      18 years and over, single (never
+V      married):
+V         41 .Reference person of a subfamily
+V         42 .Not in a subfamily
+V      18 years and over, ever-married:
+V         43 .Reference person of subfamily
+V         44 .Spouse of subfamily reference
+V            .person
+V         45 .Not in a subfamily
+
+V    In unrelated subfamily:
+V         46 .Reference person of unrelated
+V            .subfamily
+V         47 .Spouse of unrelated subfamily
+V            .reference person
+V         48 .Child < 18, single (never-
+V            .married) of unrelated subfamily
+V            .reference person
+V    Not in a family:
+V         49 .Nonfamily householder
+V         50 .Secondary individual
+V         51 .In group quarters
+
+D PARENT      1     43  (0:4)
+     Family members under 18 (excludes
+     reference person and spouse if under
+     18.)
+V          0 .Not in universe
+V    Presence of parents
+V          1 .Both parents present
+V          2 .Mother only present
+V          3 .Father only present
+V          4 .Neither parent present
+
+D AGE1        2     44  (00:17)
+     Age recode - Persons 15+ years
+V         00 .Not in universe
+V         01 .15 years
+V         02 .16 and 17 years
+V         03 .18 and 19 years
+V         04 .20 and 21 years
+V         05 .22 to 24 years
+V         06 .25 to 29 years
+V         07 .30 to 34 years
+V         08 .35 to 39 years
+V         09 .40 to 44 years
+V         10 .45 to 49 years
+V         11 .50 to 54 years
+V         12 .55 to 59 years
+V         13 .60 to 61 years
+V         14 .62 to 64 years
+V         15 .65 to 69 years
+V         16 .70 to 74 years
+V         17 .75 years and over
+
+D PHF_SEQ     2     46  (01:39)
+     Pointer to the sequence number of own
+     family record in household.  (Care 
+     should be exercised when using these 
+     data as the related subfamilies are a 
+     part of the primary family and usually 
+     their characteristics come from the 
+     primary family record)
+
+D PF_SEQ      2     48  (01:39)
+     Pointer to the sequence number of family
+     record in household (Related subfamilies
+     point to primary family)
+
+D PECOHAB     2     50  (-1:16)
+     Demographics line number of cohabiting
+     Partner
+V         -1 .No Partner present
+V          1 .Min value
+V         16 .Max value
+
+
+D PELNMOM     2     52  (-1:16)
+     Demographics line number of Mother
+V         -1 .No Mother present
+V          1 .Min Value
+V         16 .Max Value
+
+D PELNDAD     2     54  (-1:16)
+     Demographics line number of Father
+V         -1 .No Father present
+V          1 .Min value
+V         16 .Max value
+
+D PEMOMTYP    2     56  (-1:3)
+     Demographics type of Mother
+V         -1 .No Mother present
+V          1 .Biological
+V          2 .Step
+V          3 .Adopted
+
+D PEDADTYP    2     58  (-1:3)
+     Demographics type of Father
+V         -1 .No Father present
+V          1 .Biological
+V          2 .Step
+V          3 .Adopted
+
+D PEAFEVER    2     60  (-1:2)
+     Did you ever serve on active duty in
+     the U.S. Armed Forces?
+U A_AGE greater than or equal to 17
+V         -1 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D PEAFWHN1    2     62  (-1:9)
+     When did you serve?      
+U PEAFEVER=1
+V         -1 .Not in universe
+V          1 .September 2001 or later
+V          2 .August 1990 to August 2001
+V          3 .May 1975 to July 1990
+V          4 .Vietnam Era (August 1964 to
+V            .April 1975)             
+V          5 .February 1955 to July 1964
+V          6 .Korean War (July 1950 to
+V            .January 1955)
+V          7 .January 1947 to June 1950
+V          8 .World War II (December 1941
+V            .to December 1946)
+V          9 .November 1941 or earlier
+     
+D PEAFWHN2    2     64  (-1:9)
+     When did you serve?      
+U PEAFEVER=1
+V         -1 .Not in universe
+V          1 .September 2001 or later
+V          2 .August 1990 to August 2001
+V          3 .May 1975 to July 1990
+V          4 .Vietnam Era (August 1964 to
+V            .April 1975)             
+V          5 .February 1955 to July 1964
+V          6 .Korean War (July 1950 to
+V            .January 1955)
+V          7 .January 1947 to June 1950
+V          8 .World War II (December 1941
+V            .to December 1946)
+V          9 .November 1941 or earlier
+
+D PEAFWHN3    2     66  (-1:9)
+     When did you serve?      
+U PEAFEVER=1
+V         -1 .Not in universe
+V          1 .September 2001 or later
+V          2 .August 1990 to August 2001
+V          3 .May 1975 to July 1990
+V          4 .Vietnam Era (August 1964 to
+V            .April 1975)             
+V          5 .February 1955 to July 1964
+V          6 .Korean War (July 1950 to
+V            .January 1955)
+V          7 .January 1947 to June 1950
+V          8 .World War II (December 1941
+V            .to December 1946)
+V          9 .November 1941 or earlier
+
+D PEAFWHN4    2     68  (-1:9)
+     When did you serve?      
+U PEAFEVER=1
+V         -1 .Not in universe
+V          1 .September 2001 or later
+V          2 .August 1990 to August 2001
+V          3 .May 1975 to July 1990
+V          4 .Vietnam Era (August 1964 to
+V            .April 1975)             
+V          5 .February 1955 to July 1964
+V          6 .Korean War (July 1950 to
+V            .January 1955)
+V          7 .January 1947 to June 1950
+V          8 .World War II (December 1941
+V            .to December 1946)
+V          9 .November 1941 or earlier
+
+D PEDISEAR    2     70    (-1:2)
+     Is...deaf or does ...have serious
+     difficulty hearing?
+U    PRPERTYP = 2
+V         -1 .NIU
+V          1 .Yes
+V          2 .No
+
+D PEDISEYE    2     72    (-1:2)
+     Is...blind or does...have serious
+     difficulty seeing even when
+     Wearing glasses?
+U    PRPERTYP = 2
+V         -1 .NIU
+V          1 .Yes
+V          2 .No
+
+D PEDISREM    2     74    (-1:2)
+     Because of a physical, mental, or
+     emotional condition, does...have
+     serious difficulty concentrating,
+     remembering, or making decisions?
+U    PRPERTYP = 2
+V         -1 .NIU
+V          1 .Yes
+V          2 .No
+
+D PEDISPHY    2     76    (-1:2)
+     Does...have serious difficulty
+     Walking or climbing stairs?
+U    PRPERTYP = 2
+V         -1 .NIU
+V          1 .Yes
+V          2 .No
+
+
+D PEDISDRS    2     78    (-1:2)
+     Does...have difficulty dressing or
+     bathing?
+U    PRPERTYP = 2
+V         -1 .NIU
+V          1 .Yes
+V          2 .No
+
+D PEDISOUT    2     80    (-1:2)
+     Because of a physical, mental, or
+     emotional condition, does...have
+     difficulty doing errands along such as
+     visiting a doctor’s office or shopping?
+U    PRPERTYP = 2
+V         -1 .NIU
+V          1 .Yes
+V          2 .No
+
+D PRDISFLG    2     82    (-1:2)
+     Does this person have any of these
+     disability conditions?
+U    PRPERTYP = 2
+V         -1 .NIU
+V          1 .Yes
+V          2 .No
+
+D PENATVTY    3     84  (057:555)
+     In what country were you born?
+     See Appendix H.
+
+D PEMNTVTY    3     87  (057:555)
+     In what country was your mother born?
+     same as PENATVTY
+
+D PEFNTVTY    3     90  (057:555)
+     In what country was your father born?
+     same as PENATVTY
+
+D PEINUSYR    2     93  (00:22)
+     When did you come to the U.S. to stay?
+V         00 .NIU
+V         01 .Before 1950
+V         02 .1950-1959
+V         03 .1960-1964
+V         04 .1965-1969
+V         05 .1970-1974
+V         06 .1975-1979
+V         07 .1980-1981
+V         08 .1982-1983
+V         09 .1984-1985
+V         10 .1986-1987
+V         11 .1988-1989
+V         12 .1990-1991
+V         13 .1992-1993
+V         14 .1994-1995
+V         15 .1996-1997
+V         16 .1998-1999
+V         17 .2000-2001
+V         18 .2002-2003
+V         19 .2004-2005
+V         20 .2006-2007
+V         21 .2008-2009
+V         22 .2010-2011
+V         23 .2012-2013
+V         24 .2014-2015
+V	25 .2016-2018	
+
+D PRCITSHP    1     95  (0:5)
+V          1 .Native, born in the United
+V            .States
+V          2 .Native, born in Puerto Rico or
+V            .U.S. outlying area
+V          3 .Native, born abroad of American
+V            .parent or parents
+V          4 .Foreign born, U.S. citizen by
+V            .naturalization
+V          5 .Foreign born, not a citizen of
+V            .the United States
+
+D PERIDNUM   22     96
+     22-digit Unique Person identifier
+U All
+
+D FL_665      1    118  (0:3)
+U All
+V          0 .Complete nonresponse to 
+V            .supplement
+V          1 .Supplement interview
+V          2 .Some supplement response but
+V            .not enough for interview
+V          3 .Supplement interview but not
+V            .enough income data
+
+D PRDASIAN    2    119    (-1:7)
+     Detailed Asian Subgroup
+U    PRDTRACE = 04
+V         -1 .NIU
+V          1 .Asian Indian
+V          2 .Chinese
+V          3 .Filipino
+V          4 .Japanese
+V          5 .Korean
+V          6 .Vietnamese
+V          7 .Other Asian
+
+D PECERT1     2    121    (-1:2)
+Do you have a currently active professional certification or a state or industry license?
+U    PRPERTYP = 02
+V          1 .Yes
+V          2 .No
+
+D PECERT2     2    123    (-1:2)
+Were any of your certifications or licenses issued by the federal, state, or local government?
+U    PECERT1 = 1
+V          1 .Yes
+V          2 .No
+
+D PECERT3     2    125    (-1:2)
+Is your certification required for your job? Main Job? Job from which you are on layoff?  Job at which you last worked?
+U    PECERT2 = 01
+V          1 .Yes
+V          2 .No
+
+D FILLER      12   127
+
+     Filler
+
+*********************************************
+   Basic CPS weights                   
+*********************************************
+
+D A_FNLWGT    8    139  (00000000:99999999)
+     Final weight (2 implied decimal places)
+V   00000000 .Supplemental Spanish sample
+V 00000001 - .March basic sample weight
+V   99999999 .
+
+D A_ERNLWT    8    147  (00000000:99999999)
+     Earnings/not in labor force weight
+     (2 implied decimal places)
+U H_MIS=4 or 8
+V   00000000 .Not in universe or children and
+V            .Armed Forces
+
+*********************************************
+   ASEC Supplement Person Weights       
+*********************************************
+
+D MARSUPWT    8    155  (00000000:99999999)
+     Supplement final weight (2 implied
+     decimal places)
+U All
+
+*********************************************
+   Edited labor force items            
+*********************************************
+D A_HRS1      2    163  (00:99)
+      How many hrs did ... work last week
+      at all jobs
+U PEMLR=1
+V         -1 .Not in universe
+V         00 .Children and Armed Forces
+V      01-99 .Number of hrs
+
+D A_USLFT     1    165  (0:2)
+     Does ... usually work 35 hrs or more a
+     week at this job  (part 1)
+U A_HRS1 LE 34
+V          0 .Not in universe or children and
+V            .Armed Forces
+V          1 .Yes
+V          2 .No
+
+D A_WHYABS    1    166  (0:8)
+     Why was ... absent from work last week?
+U PEMLR=2
+V          0 .Not in universe or children and
+V            .Armed Forces
+V          1 .Own illness
+V          2 .On vacation
+V          3 .Bad weather
+V          4 .Labor dispute
+V          8 .Other
+
+D A_PAYABS    1    167  (0:3)
+     Is ... receiving wages or salary for
+     any of the time off last week
+     VPEMLR = 2
+V          0 .Not in universe or children and
+V            .Armed Forces
+V          1 .Yes
+V          2 .No
+V          3 .Self-employed
+
+D PEIOIND     4    168  (0000:9890)
+     Industry
+     See Appendix A for list of legal codes
+U CLSWKR = 1-7
+V       0000 .Not in universe or children
+V  0170-9890 .Legal code
+
+D PEIOOCC     4    172  (0010:9840)
+     Occupation
+     See Appendix B for list of legal codes
+U CLSWKR = 1-7
+V       -001 .Not in universe or children
+V  0010-9840 .Legal code
+
+D A_CLSWKR    1    176  (0:8)
+     Class of worker
+U PEMLR=1-4 or H_MIS=4 or 8 and PEMLR=5-7
+V          0 .Not in universe or children and
+V            .Armed Forces
+V          1 .Private
+V          2 .Federal government
+V          3 .State government
+V          4 .Local government
+V          5 .Self-employed-incorporated
+V          6 .Self-employed-not incorporated
+V          7 .Without pay
+V          8 .Never worked
+
+D A_WKSLK     3    177  (000:999)
+     Duration of unemployment
+U PEMLR=3 or 4
+V         -1 .Not in universe
+V        000 .Children or Armed Forces
+V    001-999 .Entry
+
+D A_WHENLJ    1    180  (0:5)
+     When did ... last work?
+U PEMLR = 4
+V          0 .Not in universe or children and
+V            .Armed Forces
+V          1 .In last 12 months
+V          2 .More than 12 months ago
+V          5 .Never worked at all
+
+D A_NLFLJ     1    181  (0:7)
+     When did ... last work for pay at a
+     regular job or business, either full-
+     time or part-time
+U PEMLR=5,6,or 7 and H_MIS=4 or 8 and
+  A_AGE < 50
+V          0 .Not in universe or children and
+V            .Armed Forces
+V          1 .Within a past 12 months
+V          3 .More than 12 months ago
+V          7 .Never worked
+
+
+D A_WANTJB    1    182  (0:2)
+     Does ... want a regular job now,
+     either full or part-time (I-24)=2
+U PEMLR=5,6,7
+V          0 .Not in universe or children and
+V            .Armed Forces
+V          1 .Yes
+V          2 .No
+V          5 .February 1955 to July 1964
+V          6 .Korean War (July 1950 to
+V            .January 1955)
+V          7 .January 1947 to June 1950
+V          8 .World War II (December 1941
+V            .to December 1946)
+V          9 .November 1941 or earlier
+
+*********************************************
+   Edited earnings items               
+*********************************************
+
+D PRERELG     1    183  (0:1)
+     Earnings eligibility flag
+U All
+V          0 .Not earnings eligible
+V          1 .Earnings eligible
+
+D A_USLHRS    2    184  (00:99)
+     How many hrs per week does ...
+     usually work at this job?
+U  All
+V         -4 .Hours vary
+V         -1 .Not in universe
+V         00 .None, no hours
+V      01-99 .Entry
+
+D A_HRLYWK    1    186  (0:2)
+     Is ... paid by the hour on this job?
+U PRERELG=1
+V          0 .Not in universe or children and
+V            .Armed Forces
+V          1 .Yes
+V          2 .No
+
+D A_HRSPAY    4    187  (0000:9999)
+     How much does ... earn per hour?
+U A_HRLYWK=1
+V       0000 .Not in universe or children and
+V            .Armed Forces
+V  0001-9999 .Entry (2 implied decimal
+V            .places)
+
+D A_GRSWK     4    191  (0000:2885)
+     How much does ... usually earn per
+     week at this job before deductions 
+     , subject to topcoding,  the higher 
+     of either the amount of item 25a times 
+     Item 25c or the actual item 25d entry 
+     will be present.
+U PRERELG=1
+V       0000 .Not in universe or children or
+V            .Armed Forces
+V  0001-2885 .Entry
+
+D A_UNMEM     1    195  (0:2)
+     On this job, is ... a member of a
+     labor union or of an employee
+     association similar to a union
+U PRERELG=1
+V          0 .Not in universe or children and
+V            .Armed Forces
+V          1 .Yes
+V          2 .No
+
+D A_UNCOV     1    196  (0:2)
+     On this job, is ... covered by a union
+     or employee association contract
+U A_UNMEM=2
+V          0 .Not in universe or children and
+V            .Armed Forces
+V          1 .Yes
+V          2 .No
+
+D A_ENRLW     1    197   (0:2)
+     Last week was ... attending or
+     enrolled in a high school, college or
+     university
+U A_AGE=16-54
+V          0 .Not in universe or children and
+V            .Armed Forces
+V          1 .Yes
+V          2 .No
+
+D A_HSCOL     1    198  (0:2)
+U A_ENRLW=1
+V          0 .Not in universe or children and
+V            .Armed Forces
+V          1 .High school
+V          2 .College or univ.
+
+D A_FTPT      1    199  (0:2)
+     Is ... enrolled in school as a full-
+     time or part-time student
+U A_ENRLW=1
+V          0 .Not in universe or children and
+V            .Armed Forces
+V          1 .Full time
+V          2 .Part time
+
+********************************************
+   Labor force person recodes            
+********************************************
+
+D A_LFSR      1    200  (0:7)
+     Labor force status recode
+U All
+V          0 .Children or Armed Forces
+           1 .Working
+           2 .With job, not at work
+V          3 .Unemployed, looking for work
+V          4 .Unemployed, on layoff
+V          7 .Nilf
+
+D A_UNTYPE    1    201  (0:5)
+     Reason for unemployment
+U A_LFSR=3 or 4
+V          0 .Not in universe or children
+V            .and Armed Forces
+V          1 .Job loser - on layoff
+V          2 .Other job loser
+V          3 .Job leaver
+V          4 .Re-entrant
+V          5 .New entrant
+
+D A_WKSTAT    1    202  (0:7)
+     Full/part-time status
+U All
+V          0 .Children or Armed Forces
+V          1 .Not in labor force
+V          2 .Full-time schedules
+V          3 .Part-time for economic reasons,
+V            .usually FT
+V          4 .Part-time for non-economic
+V            .reasons, usually PT
+V          5 .Part-time for economic reasons,
+V            .usually PT
+V          6 .Unemployed FT
+V          7 .Unemployed PT
+
+D A_EXPLF     1    203  (0:2)
+     Experienced labor force employment
+     status
+U A_CLSWRK NE 8
+V          0 .Not in experienced labor force
+V          1 .Employed
+V          2 .Unemployed
+
+D A_WKSCH     1    204  (0:4)
+     Labor force by time worked or lost
+U All
+V          0 .Not in universe
+V          1 .At work
+V          2 .With job, not at work
+V          3 .Unemployed, seeks FT
+V          4 .Unemployed, seeks PT
+
+D A_CIVLF     1    205  (0:1)
+     Civilian labor force
+V          0 .Not in universe or children and
+V            .Armed Forces
+V          1 .In universe
+
+D A_FTLF      1    206  (0:1)
+     Full/time labor force
+U F/T
+V          0 .Not in universe or children and
+V            .Armed Forces
+V          1 .In universe
+
+D A_MJIND     2    207  (00:14)
+     Major industry code
+U  A_CLSWKR = 1-7
+V          0 .Not in universe, or children
+V          1 .Agriculture, forestry,
+V            .fishing, and hunting
+V          2 .Mining
+V          3 .Construction
+V          4 .Manufacturing
+V          5 .Wholesale and retail trade
+V          6 .Transportation and utilities
+V          7 .Information
+V          8 .Financial activities
+V          9 .Professional and business
+V            .services
+V         10 .Educational and health services
+V         11 .Leisure and hospitality
+V         12 .Other services
+V         13 .Public administration
+V         14 .Armed Forces
+
+D A_DTIND     2    209  (00:52)
+     Detailed industry recode
+     See Appendix A for list of legal codes
+U A_CLSWKR=1-7
+V         00 .Not in universe or children or
+V            .Armed Forces
+
+D A_MJOCC     2    211  (00:11)
+     Major occupation recode
+U  A_CLSWKR = 1-7
+V          0 .Not in universe or children
+V          1 .Management, business, and
+V            .financial occupations
+V          2 .Professional and related
+V            .occupations
+V          3 .Service occupations
+V          4 .Sales and related occupations
+V          5 .Office and administrative
+V            .support occupations
+V          6 .Farming, fishing, and
+V            .forestry occupations
+V          7 .Construction and extraction
+V            .occupations
+V          8  .Installation, maintenance,
+V            .and repair occupations
+V          9 .Production occupations
+V         10 .Transportation and material
+V            .moving occupations
+V         11 .Armed Forces
+
+D A_DTOCC     2    213  (00:23)
+     Detailed occupation recode
+     See Appendix B2 for list of legal codes
+U A_CLSWKR=1-7
+V         00 .Not in universe for children or
+V            .Armed Forces
+
+D PEIO1COW    2    215  (00:08)
+     Individual class of worker on first job.
+V          0 .NIU
+V          1 .Government-federal
+V          2 .Government-state
+V          3 .Government - local
+V          4 .Private, for profit
+V          5 .Private, nonprofit
+V          6 .Self-employed, incorporated
+V          7 .Self-employed, unincorporated
+V          8 .Without pay
+
+D PRCOW1      1    217  (0:6)
+     Class of worker recode-job 1
+V          0 .NIU
+V          1 .Federal govt
+V          2 .State govt
+V          3 .Local govt
+V          4 .Private (incl. self-employed
+V            .incorp.)
+V          5 .Self-employed, unincorp.
+V          6 .Without pay
+
+D PEMLR       1    218  (0:7)
+     Major labor force recode
+V          0 .NIU
+V          1 .Employed - at work
+V          2 .Employed - absent
+V          3 .Unemployed - on layoff
+V          4 .Unemployed - looking
+V          5 .Not in labor force - retired
+V          6 .Not in labor force - disabled
+V          7 .Not in labor force - other
+
+D PRUNTYPE    1    219  (0:6)
+     Reason for unemployment
+V          0 .NIU
+V          1 .Job loser/on layoff
+V          2 .Other job loser
+V          3 .Temporary job ended
+V          4 .Job leaver
+V          5 .Re-entrant
+V          6 .New-entrant
+
+D PRWKSTAT    2    220  (00:12)
+     Full/part-time work status
+V         00 .NIU
+V         01 .Not in labor force
+V         02 .FT hours (35+), usually FT
+V         03 .PT for economic reasons,
+V            .usually FT
+V         04 .PT for non-economic reasons,
+V            .usually FT
+V         05 .Not at work, usually FT
+V         06 .PT hrs, usually PT for economic
+V            .reasons
+V         07 .PT hrs, usually PT for non-
+V            .economic
+V         08 .FT hours, usually PT for
+V            .economic reasons
+V         09 .FT hours, usually PT for non-
+V            .economic reasons
+V         10 .Not at work, usually part-time
+V         11 .Unemployed FT
+V         12 .Unemployed PT
+
+D PRPTREA     2    222  (00:23)
+     Detailed reason for part-time
+V         -1 .NIU - adult civilian
+V          0 .NIU - children or Armed Forces
+V          1 .Usually FT - slack work/
+V            .business conditions
+V          2 .Usually FT - seasonal work
+V          3 .Usually FT - job started/ended
+V            .during week
+V          4 .Usually FT - vacation/personal
+V            .day
+V          5 .Usually FT - own illness/
+V            .injury/medical appt
+V          6 .Usually FT - holiday
+V            .(religious or legal)
+V          7 .Usually FT - child care 
+V            .problems
+V          8 .Usually FT - other fam/pers
+V            .obligations
+V          9 .Usually FT - labor dispute
+V         10 .Usually FT - weather affected
+V            .job
+V         11 .Usually FT - school/training
+V         12 .Usually FT - civic/military 
+V            .duty
+V         13 .Usually FT - other reason
+V         14 .Usually PT - slack
+V            .work/business
+V            .conditions
+V         15 .Usually PT - PT could only find
+V            .PT work
+V         16 .Usually PT - seasonal work
+V         17 .Usually PT - child care 
+V            .problems
+V         18 .Usually PT - other fam/pers
+V            .obligations
+V         19 .Usually PT - health/medical
+V            .limitations
+V         20 .Usually PT - school/training
+V         21 .Usually PT - retired/social
+V            .security limit on earnings
+V         22 .Usually PT - workweek <35 hours
+V         23 .Usually PT - other reason
+
+D PRDISC      1    224  (0:3)
+     Discouraged worker recode
+V          0 .NIU
+V          1 .Discouraged worker
+V          2 .Conditionally interested
+V          3 .Not available
+
+D PEABSRSN    2    225  (00:14)
+     What was the main reason...was absent
+     from work last week?
+U PEMLR = 2
+V         -1 .NIU - adult civilian
+V          0 .NIU - children or Armed Forces
+V          2 .Slack work/business conditions
+V          4 .Vacation/personal days
+V          5 .Own illness/injury/medical
+V            .problems
+V          6 .Child care problems
+V          7 .Other family/personal
+V            .obligation
+V          8 .Maternity/paternity leave
+V          9 .Labor dispute
+V         10 .Weather affected job
+V         11 .School/training
+V         12 .Civic/military duty
+V         13 .Does not work in the business
+V         14 .Other (specify)
+
+D PRNLFSCH    1    227  (0:2)
+     NLF activity in school or not in school
+V          0 .NIU
+V          1 .In school
+V          2 .Not in school
+
+D PEHRUSLT    3    228  (-4:198)
+     Hours usually worked last week
+V         -4 .Hours vary
+V         -1 .NIU - adult civilian
+V        000 .NIU - children or Armed Forces
+V            .or no hours
+V        198 .Max value
+
+D FILLER     20    231
+     Filler
+
+********************************************
+   Edited work experience items
+   All persons 15+ years                       
+********************************************
+D WORKYN      1    251  (0:2)
+     Item 29a - Did ... work at a job or
+     business at any time during 20..?
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D WRK_CK      1    252  (0:2)
+     Item 76 - Interviewer check item worked
+     last year
+U WORKYN = 1 or WTEMP = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D WTEMP       1    253  (0:2)
+     Item 29b - Did ... do any temporary,
+     part-time, or seasonal work even for a
+     few days during 20..?
+U WORKYN = 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D NWLOOK      1    254  (0:2)
+     Item 30 - Even though ... did not work 
+     in 20.. did spend and time trying to 
+     find a job or on layoff?
+U WORKYN = 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D NWLKWK      2    255  (00:52)
+     Item 31 - How many different weeks
+was ... looking for work or on layoff from a job?
+U NWLOOK = 1
+V         00 .Not in universe
+V         01 .1 week
+V            ...
+V         52 .52 weeks
+
+D RSNNOTW     1    257  (0:6)
+     Item 32 - What was the main
+     reason ... did not work in 20..?
+U WORKYN = 2
+V          0 .Not in universe
+V          1 .Ill or disabled
+V          2 .Retired
+V          3 .Taking care of home or family
+V          4 .Going to school
+V          5 .Could not find work
+V          6 .Other
+
+D WKSWORK     2    258  (00:52)
+     Item 33 - During 20.. in how many weeks
+     did ... work even for a few hours? 
+     Include paid vacation and sick leave 
+     as work.
+U WORKYN = 1
+V         00 .Not in universe
+V         01 .1 week
+V            ...
+V         52 .52 weeks
+
+D WKCHECK     1    260  (0:3)
+     Item 34 - Interviewer check item -
+     Number of weeks in item 34 is:
+U WORKYN = 1
+V          0 .Not in universe
+V          1 .1-49 weeks
+V          2 .50-51 weeks
+V          3 .52 weeks
+
+D LOSEWKS     1    261  (0:2)
+     Item 35 Did ... lose any full weeks of
+work in 20.. because ... was on layoff from a job or lost a job?
+U 50 or 51 in WKSWORK
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D LKNONE      1    262  (0:1)
+     Item 36 -  You said... worked about
+     (entry in item 33) weeks. How
+     many OF THE REMAINING (52 minus entry in
+     item 33) weeks was ... looking for work
+     or on layoff from a job?
+U 1 to 51 in WKSWORK
+V          0 .Not in universe
+V          1 .No weeks looking for work or on
+V            .layoff
+
+D LKWEEKS     2    263  (00:51)
+     Item 36 - Weeks was ... looking for
+     work or on layoff from a job?
+U 1 to 51 in WKSWORK
+V         00 .Not in universe
+V         01 .01 weeks
+V            ...
+V         51 .51 weeks
+
+D LKSTRCH     1    265  (0:3)
+     Item 37 - Were the (entry in item 36)
+     weeks ... was looking for work or on
+     layoff all in one stretch?
+U Entry in LKWEEKS
+V          0 .Not in universe
+V          1 .Yes, 1 stretch
+V          2 .No, 2 stretches
+V          3 .No, 3 plus stretches
+
+D PYRSN       1    266  (0:6)
+     Item 38 - What was the main reason ...
+     was not working or looking for work in
+     the remaining weeks of 20..?
+U Sum of entries in WKSWORK and LKWEEKS add
+  to a number less than 52
+V          0 .Not in universe
+V          1 .Ill or disabled
+V          2 .Taking care of home
+V          3 .Going to school
+V          4 .Retired
+V          5 .No work available
+V          6 .Other
+
+D PHMEMPRS    1    267  (0:3)
+     Item 39 - For how many employers did ...
+     work in 20..?  If more than one at same
+     time, only count it as one employer.
+U Yes in WKSWORK
+V          0 .Not in universe
+V          1 .1 employer
+V          2 .2
+V          3 .3 plus
+
+D HRSWK       2    268  (00:99)
+     Item 41 - In the weeks that ... worked
+     how many hours did ... usually work per
+     week?
+U WORKYN = 1
+V         00 .Not in universe
+V         01 .1 hour
+V            ...
+V         99 .99 hours plus
+
+D HRCHECK     1    270  (0:2)
+     Item 41 - Interviewer check item -
+     Number of hours in item 41 is?
+U WORKYN = 1
+V          0 .Not in universe
+V          1 .Part time (1-34)
+V          2 .Full time (35+)
+
+D PTYN        1    271  (0:2)
+     Item 43 – During 20.., were there one or 
+     more weeks in which ... worked less than 
+     35 hours? Exclude time off with pay 
+     because of holidays, vacation, days off, 
+     or sickness.
+U HRCHECK = 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D PTWEEKS     2    272  (00:52)
+     Item 44 – In the weeks that ... worked, 
+     how many weeks did ... work
+     less than 35 hours in 20..?
+U PTYN = 1 or HRCHECK = 1
+V         00 .Not in universe
+V         01 .1 week
+V            ...
+V         52 .52 weeks
+
+D PTRSN       1    274  (0:4)
+     Item 45 - What was the main reason ...
+     worked less than 35 hours per week?
+U PTYN = 1 or HRCHECK = 1
+V          0 .Not in universe
+V          1 .Could only find PT job
+V          2 .Wanted part time
+V          3 .Slack work
+V          4 .Other
+
+*********************************************
+   Work experience recodes              
+*********************************************
+
+D WEXP        2    275  (00:13)
+     Recode -  Worker/nonworker recode -
+     full/part time workers
+U All adults
+V         00 .Not in universe
+V    Worked full time
+V         01 .50 to 52 weeks
+V         02 .48 to 49 weeks
+V         03 .40 to 47 weeks
+V         04 .27 to 39 weeks
+V         05 .14 to 26 weeks
+V         06 .13 weeks or less
+V    Worked part time
+V         07 .50 to 52 weeks
+V         08 .48 to 49 weeks
+V         09 .40 to 47 weeks
+V         10 .27 to 39 weeks
+V         11 .14 to 26 weeks
+V         12 .13 weeks or less
+V         13 .Nonworker
+
+D WEWKRS      1    277  (0:5)
+     Recode -  Worker/nonworker recode -
+     weeks worked last year
+U All adults
+V          0 .Not in universe
+V    Full year worker
+V          1 .Full time
+V          2 .Part time
+V    Part year worker
+V          3 .Full time
+V          4 .Part time
+V          5 .Nonworker
+
+D WELKNW      1    278  (0:7)
+     Recode -  Worker/nonworker recode -
+     weeks looking for nonworkers
+U All adults
+V          0 .Children
+V          1 .None (not looking for work)
+V          2 .1 to 4 weeks looking
+V          3 .5 to 14 weeks looking
+V          4 .15 to 26 weeks looking
+V          5 .27 to 39 weeks looking
+V          6 .40 or more weeks looking
+V          7 .Workers
+
+D WEUEMP      1    279  (0:9)
+     Recode - Worker/nonworker recode - Part
+     year worker weeks looking
+U All adults
+V          0 .Not in universe
+V          1 .None
+V          2 .1 to 4 weeks
+V          3 .5 to 10 weeks
+V          4 .11 to 14 weeks
+V          5 .15 to 26 weeks
+V          6 .27 to 39 weeks
+V          7 .40 or more weeks
+V          8 .Full year worker
+V          9 .Nonworker
+
+D EARNER      1    280  (0:2)
+     Recode - Earner status
+U All adults
+V          0 .Not in universe
+V          1 .Earner (PEARNVAL ne 0)
+V          2 .Nonearner
+
+D CLWK        1    281  (0:5)
+     Recode - Longest job class of worker
+     recode
+     WORKYNB = 1
+U All adults
+V          0 .Not in universe
+V          1 .Private (includes self-
+V            .employment, inc)
+V          2 .Government
+V          3 .Self-employed
+V          4 .Without pay
+V          5 .Never worked
+
+D WECLW       1    282  (0:9)
+     Recode - Longest job class of worker
+     WORKYN = 1
+U All adults
+V          0 .Not in universe
+V    Agriculture
+V          1 .Wage and salary
+V          2 .Self-employed
+V          3 .Unpaid
+V    Nonagriculture
+V          4 .Private household
+V          5 .Other private
+V          6 .Government
+V          7 .Self-employed
+V          8 .Unpaid
+V          9 .Never worked
+
+D POCCU2      2    283  (00:53)
+     Recode - Occupation of longest job by
+     Detailed groups
+U  All adults
+V            .(See Appendix B for detailed
+V            .listing of codes.)
+
+D WEMOCG      2    285      (00:24)
+     Recode - Occupation of longest job by
+     major groups
+U  All adults
+V            .(See Appendix B for detailed
+V            .listing of codes.)
+
+D WEIND       2    287  (00:23)
+     Recode - Industry of longest job by
+     Detailed groups
+U  All adults
+V            .(See Appendix A for detailed
+V            .listing of codes.)
+
+D WEMIND      2    289  (00:15)
+     Recode - Industry of longest job by
+     major industry groups
+U  All adults
+V            .(See Appendix A for detailed
+V            .listing of codes.)
+
+D LJCW        1    291  (0:7)
+     Item 46e - Class of worker
+U WORKYN = 1
+V          0 .Not in universe
+V          1 .Private
+V          2 .Federal
+V          3 .State
+V          4 .Local
+V          5 .Self-employed incorporated, yes
+V          6 .Self-employed incorporated, no
+V            .or farm
+V          7 .Without pay
+
+D INDUSTRY    4    292  (0000:9890)
+     Industry of longest job
+     See Appendix A for list of legal codes
+U WORKYN = 1
+V          0000 .Not in universe or children
+V 0170-9890 .Legal code
+
+D OCCUP       4    296  (0010:9830)
+     Occupation of longest job
+     See Appendix B for list of legal codes
+U WORKYN = 1
+V       0000 .Not in universe or children
+V  0010-9830 .Legal code
+
+D NOEMP       1    300  (0:6)
+     Item 4788 - Counting all locations where
+     this employer operates, what is the 
+     total number of persons who work 
+     for ...'s employer?
+V          0 .Not in universe
+V          1 .Under 10
+V          2 .10 - 49
+V          3 .50 - 99
+V          4 .100 - 499
+V          5 .500 - 999
+V          6 .1000+
+
+
+D FILLER      20    301  (0:2)
+     Filler
+
+*********************************************
+   Edited migration items
+   Persons 1+ years                               
+*********************************************
+
+D NXTRES      2    321  (0:18)
+     What was ... main reason for moving?
+V          0 .NIU
+V          1 .Change in marital status
+V          2 .To establish own household
+V          3 .Other family reason
+V          4 .New job or job transfer
+V          5 .To look for work or lost job
+V          6 .To be closer to work/easier
+V            .commute
+V          7 .Retired
+V          8 .Other job-related reason
+V          9 .Wanted to own home, not rent
+V         10 .Wanted new or better house/
+V            .apartment
+V         11 .Wanted better neighborhood
+V         12 .Cheaper housing
+V         13 .Foreclosure/eviction
+V         14 .Other housing reason
+V         15 .Attend/leave college
+V         16 .Change of climate
+V         17 .Health reasons
+V         18 .Natural disaster
+V         19 .Other reason
+
+D MIG_CBST    1    323  (0:4)
+     Item 55a - Metropolitan statistical area
+     status description of residence last 
+     year
+U MIGSAME = 2
+V          0 .NIU, nonmover
+V          1 .CBSA
+V          2 .non CBSA
+V          3 .Abroad
+V          4 .Not identifiable
+
+D MIGSAME     1    324  (0:3)
+     Was ... living in this house (apt.) 1
+     year ago?
+V          0 .NIU
+V          1 .Yes (nonmover)
+V          2 .No, difference house in U.S.
+V            .(mover)
+V          3 .No, outside the U.S. (mover)
+
+D MIG_REG     1    325  (0:5)
+     Recode - Region of previous residence
+V          0 .Not in universe under 1 year
+V            .old/nonmover
+V          1 .Northeast
+V            .Maine
+V            .New Hampshire
+V            .Vermont
+V            .Massachusetts
+V            .Rhode Island
+V            .Connecticut
+V            .New York
+V            .New Jersey
+V            .Pennsylvania
+V          2 .Midwest
+V            .Ohio
+V            .Indiana
+V            .Illinois
+V            .Michigan
+V            .Wisconsin
+V            .Minnesota
+V            .Iowa
+V            .Missouri
+V            .North Dakota
+V            .South Dakota
+V            .Nebraska
+V            .Kansas
+V          3 .South
+V            .Delaware
+V            .Maryland
+V            .District of Columbia
+V            .Virginia
+V            .West Virginia
+V            .North Carolina
+V            .South Carolina
+V            .Georgia
+V            .Florida
+V            .Kentucky
+V            .Tennessee
+V            .Alabama
+V            .Mississippi
+V            .Arkansas
+V            .Louisiana
+V            .Oklahoma
+V            .Texas
+V          4 .West
+V            .Montana
+V            .Idaho
+V            .Wyoming
+V            .Colorado
+V            .New Mexico
+V            .Arizona
+V            .Utah
+V            .Nevada
+V            .Washington
+V            .Oregon
+V            .California
+V            .Alaska
+V            .Hawaii
+V          5 .Abroad
+
+D MIG_ST      2    326  (00:56, 96)
+     Recode - FIPS State code of previous
+     residence
+V         00 .Nonmatch
+V         01 .Alabama
+V         02 .Alaska
+V         04 .Arizona
+V         05 .Arkansas
+V         06 .California
+V         08 .Colorado
+V         09 .Connecticut
+V         10 .Delaware
+V         11 .District of Columbia
+V         12 .Florida
+V         13 .Georgia
+V         15 .Hawaii
+V         16 .Idaho
+V         17 .Illinois
+V         18 .Indiana
+V         19 .Iowa
+V         20 .Kansas
+V         21 .Kentucky
+V         22 .Louisiana
+V         23 .Maine
+V         24 .Maryland
+V         25 .Massachusetts
+V         26 .Michigan
+V         27 .Minnesota
+V         28 .Mississippi
+V         29 .Missouri
+V         30 .Montana
+V         31 .Nebraska
+V         32 .Nevada
+V         33 .New Hampshire
+V         34 .New Jersey
+V         35 .New Mexico
+V         36 .New York
+V         37 .North Carolina
+V         38 .North Dakota
+V         39 .Ohio
+V         40 .Oklahoma
+V         41 .Oregon
+V         42 .Pennsylvania
+V         44 .Rhode Island
+V         45 .South Carolina
+V         46 .South Dakota
+V         47 .Tennessee
+V         48 .Texas
+V         49 .Utah
+V         50 .Vermont
+V         51 .Virginia
+V         53 .Washington
+V         54 .West Virginia
+V         55 .Wisconsin
+V         56 .Wyoming
+V         96 .Abroad
+
+D MIG_DSCP    1    328  (0:5)
+     Recode - CBSA status of residence 1 year
+     ago.
+V          0 .NIU (under 1 year old,
+V            .nonmover)
+V          1 .Principal city of a CBSA
+V          2 .Balance of a CBSA
+V          3 .Non-metro
+V          4 .Abroad
+V          5 .Not identified
+
+D GEDIV       1    329  (1:9)
+     Recode - Census division of current
+     residence.
+V          1 .New England
+V          2 .Middle Atlantic
+V          3 .East North Central
+V          4 .West North Central
+V          5 .South Atlantic
+V          6 .East South Central
+V          7 .West South Central
+V          8 .Mountain
+V          9 .Pacific
+
+D MIG_DIV     2    330  (00:10)
+     Recode - Census division of previous
+     residence.
+V         00 .Not in universe (under 1 year
+V            .old)
+V         01 .New England
+V         02 .Middle Atlantic
+V         03 .East North Central
+V         04 .West North Central
+V         05 .South Atlantic
+V         06 .East South Central
+V         07 .West South Central
+V         08 .Mountain
+V         09 .Pacific
+V         10 .Aboard
+
+D MIG_MTR1    2    332  (01:09)
+V         01 .Nonmover
+V         02 .Metro to metro
+V         03 .Metro to non-metro
+V         04 .Non-metro to metro
+V         05 .Non-metro to non-metro
+V         06 .Abroad to metro
+V         07 .Abroad to non-metro
+V         08 .Not in universe (Children
+V            .under 1 year old)
+V         09 .Not identifiable
+
+D MIG_MTR3    1    334  (1:8)
+V          1 .Nonmover
+V          2 .Same county
+V          3 .Different county, same state
+V          4 .Different state, same division
+V          5 .Different division, same
+V            .region
+V          6 .Different region
+V          7 .Abroad
+V          8 .Not in universe (children
+V            .under 1 yr old)
+
+D MIG_MTR4    1    335  (1:9)
+V          1 .Nonmover
+V          2 .Same county
+V          3 .Different county, same state
+V          4 .Different state in Northeast
+V          5 .Different state in Midwest
+V          6 .Different state in South
+V          7 .Different state in West
+V          8 .Abroad, foreign country
+V          9 .Not in universe (children
+V            .under 1 yr old)
+
+D FILLER      16    336  (0:1)
+     Filler for 5-year migration
+
+*********************************************
+   Source of income -- earnings -- items   
+   48a through 49b  -- persons 15+ years   
+*********************************************
+
+D ERN-YN      1    352  (0:2)
+     Earnings from longest job recode
+     Earnings from employer or net earnings
+     from business/farm after expenses from
+     longest job during 20..
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D ERN-SRCE    1    353  (0:4)
+     Earnings  recode
+     Source of earnings from longest job.
+U ERN_YN = 1
+V          0 .Not in universe
+V          1 .Wage and salary
+V          2 .Self employment
+V          3 .Farm self-employment
+V          4 .Without pay
+
+D ERN_OTR     1    354  (0:2)
+     Item 49a - Did ... earn money from other
+     work he/she did during 20..?
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D ERN_VAL     7    355  (-99999:9999999)
+     Item 48a & b - How much did ... earn 
+     from this employer before deductions 
+     in 20..?
+     What were ... net earnings from this
+     business/farm after expenses during 
+     20..?
+U ERN_YN = 1
+V     000000 .None or not in universe
+V  0-99999 - .Wages & self-employment
+V    9999999 .
+
+D WAGEOTR     1    362  (0:2)
+     Item 49b -Other wage and salary earnings
+U ERN_OTR = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D WSAL_YN     1    363  (0:2)
+     Recode
+     Any wage and salary earnings in ERN_YN
+     or WAGEOTR
+U ERN_YN = 1 or WAGEOTR = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D WSAL_VAL    7    364  (000000:9999999)
+     Recode - Total wage and salary earnings
+     (combined amounts in ERN_VAL, if
+     ERN_SRCE=1, and WS_VAL)
+U ERN_YN = 1 or WAGEOTR = 1
+V     000000 .None or not in universe
+V   000001 - .Wage and salary
+V     662169 .
+
+D WS_VAL      7    371  (000000:9999999)
+     Item 49b1 - Other wage and salary 
+     earnings
+U ERN_OTR = 1
+V     000000 .None or not in universe
+V    000001- .Wage and salary
+V     9999999.
+
+D SEOTR       1    378  (0:2)
+     Item 49b2 - Other work - Own business
+     self-employment
+U ERN_OTR = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D SEMP_YN     1    379  (0:2)
+     Recode - Any own business self-
+     employment in ERN_YN SEOTR
+U ERN_YN = 1 or SEOTR = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D SEMP_VAL    7    380  (-99999:9999999)
+     ERN_YN = 1 or SEOTR = 1
+     Total own business self-employment
+     earnings (combined amounts in ERN_VAL, 
+     if ERN_SRCE=2, and SE_VAL)
+V     000000 .None or not in universe
+V   -99999 - .Own business self-employment
+V     9999999.
+
+D SE_VAL      6    387  (-99999:999999)
+     Item 49b2 - Other work - Own business
+     self-employment earnings
+U SEOTR = 1
+V      00000 .None or not in universe
+V   -99999 - .Own business self-employment
+V     999999 .
+
+D FRMOTR      1    393  (0:2)
+     Item 49b4- Farm self-employment
+U ERN_OTR = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D FRSE_YN     1    394  (0:2)
+     Any own farm self-employment in ERN_YN
+     or FRMOTR
+U ERN_YN = 1 or FRMOTR = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D FRSE_VAL    7    395  (-99999:9999999)
+     Recode - Total amount of farm self-
+     employment earnings (combined amounts
+     in ERN_VAL, if ERN_SRCE=3, and FRM_VAL)
+U ERN_YN = 1 or FRMOTR = 1
+V     000000 .None or not in universe
+V  0-99999 -. Farm self-employment
+V     9999999.
+
+
+D FRM_VAL     6    402  (-99999:999999)
+     Item 49b4 - Farm self-employment 
+     earnings
+U FRMOTR = 1
+V      00000 .None or not in universe
+V   -99999 - .Farm self-employment
+V     999999.
+
+*********************************************
+     Source of income
+     unemployment compensation                           
+*********************************************
+D UC_YN       1    408  (0:2)
+     Item 51a1 - At any time during 20..
+     did ... receive any state or federal
+     unemployment compensation
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D SUBUC       1    409  (0:2)
+     Item 51a2 - At any time during 20..
+     did ... receive any supplemental
+     unemployment benefits
+U UC_YN = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D STRKUC      1    410  (0:2)
+     Item 51a3 -At any time during 20..
+    did ... receive any union unemployment
+    or strike benefits
+U UC_YN = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D UC_VAL      5    411  (00000:99999)
+     Item 51b - How much did ... receive in
+     unemployment benefits during 20..
+U UC_YN = 1
+V      00000 .None or not in universe
+V     00001- .Unemployment compensation
+V      99999 .
+
+*********************************************
+      Source of income
+      worker's compensation                          
+*********************************************
+
+D WC_YN       1    416  (0:2)
+     Item 52a - During 20.. did ... receive
+     any worker's compensation payments or
+     other payments as a result of a job
+     related injury or illness
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D WC_TYPE     1    417  (0:4)
+     Item 52b
+     What was source of these payments
+U WC_YN = 1
+V          0 .Not in universe
+V          1 .State worker's compensation
+V          2 .Employer or employers insurance
+V          3 .Own insurance
+V          4 .Other
+
+D WC_VAL      5    418  (00000:99999)
+     Item 52c - How much compensation did
+     ...receive during 20..?
+U WC_YN = 1
+V      00000 .None or not in universe
+V    00001-  .Worker's compensation
+V      99999 .
+
+********************************************
+     Source of income
+     Social Security Income                                  
+********************************************
+
+D SS_YN       1    423  (0:2)
+     Item 56b - Did ... receive social security?
+U P_STAT = 1 or 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D SS_VAL      5    424  (00000:50000)
+     Item 56d - How much did ... receive 
+     (monthly/quarterly) in Social Security 
+     payments in 20..?
+U SS_YN = 1
+V      00000 .None or not in universe
+V    00001-  .Social security
+V      50000 .
+
+D RESNSS1     1    429  (0:8)
+     What were the reasons (you/name)
+     (Was/were) getting Social Security
+     in 20..?
+V          0 .NIU
+V          1 .Retired
+V          2 .Disabled (adult or child)
+V          3 .Widowed
+V          4 .Spouse
+V          5 .Surviving child
+V          6 .Dependent child
+V          7 .on behalf of surviving,
+V            .dependent, or disabled
+V            .child(ren)
+V          8 .Other (adult or child)	
+
+D RESNSS2     1    430  (0:8)
+     What were the reasons (you/name)
+     (Was/were) getting Social Security
+     last year?
+V          0 .NIU
+V          1 .Retired
+V          2 .Disabled (adult or child)
+V          3 .Widowed
+V          4 .Spouse
+V          5 .Surviving child
+V          6 .Dependent child
+V          7 .On behalf of surviving,
+V            .dependent, or disabled
+V            .child(ren)
+V          8 .Other (adult or child)
+
+D SSKIDYN     1    431  (0:2)
+     Which children under age 19 were
+     receiving social security in 201..?
+V          0 .NIU
+V          1 .Received SS
+V          2 .Did not receive SS
+
+********************************************
+     Source of Income
+     Supplemental Security Income                         
+********************************************
+
+D SSI_YN      1    432  (0:2)
+     Item 57b - Did ... receive SSI?
+U P_STAT = 1 or 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D SSI_VAL     5    433  (0000:25000)
+     Item 57c - How much did ... receive in
+     Supplemental Security Income payments in 20..?
+U SSI_YN = 1
+V       0000 .None or not in universe
+V 0001-25000 .Supplemental security income
+
+D RESNSSI1    1    438  (0:5)
+     What were the reasons (you/name)
+     (Was/were) getting supplemental
+     Security Income in 20..?
+V          0 .NIU
+V          1 .Disabled (adult or child)
+V          2 .Blind (adult or child)
+V          3 .On behalf of a disabled child
+V          4 .On behalf of a blind child
+V          5 .Other (adult or child)
+
+D RESNSSI2    1    439  (0:5)
+     What were the reasons (you/name)
+     (Was/were) getting Supplemental
+     Security Income in 20..?
+V          0 .NIU
+V          1 .Disabled (adult or child)
+V          2 .Blind (adult or child)
+V          3 .On behalf of a disabled child
+V          4 .On behalf of a blind child
+V          5 .Other (adult or child)
+
+D SSIKIDYN    1    440  (0:2)
+     Which children under age 18 were
+     receiving Supplemental Security Income
+     in 20..?
+V          0 .NIU
+V          1 .Received SSI
+V          2 .Did not receive SSI
+
+********************************************
+     Source of Income
+     Public Assistance or Welfare                              
+********************************************
+
+D PAW_YN      1    441  (0:2)
+     Item 59b - Did ... receive any CASH assistance from a state or county welfare program such as ...
+U P_STAT = 1 or 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D PAW_TYP     1    442  (0:3)
+	Item 59c – From what type of program did ... receive the CASH assistance?
+U PAW_YN = 1
+V          0 .Not in universe
+V          1 .TANF/AFDC
+V          2 .Other
+V          3 .Both
+
+D PAW_MON     2    443  (00:12)
+     Item 59d - In how many months of 20..
+     did ... receive CASH assistance 
+U PAW_YN = 1
+V         00 .Not in universe
+V         01 .One
+V            ...
+V         12 .Twelve
+
+D PAW_VAL     5    445  (00000:25000)
+     Item 59e – During 20.., how much CASH assistance did ... receive 
+U PAW_YN = 1
+V      00000 .None or not in universe
+V    00001-  .Public assistance income
+V      25000 .
+
+*********************************************
+     Source of Income                    
+     Veterans' Administration Benefits       
+*********************************************
+
+D VET_YN      1    450  (0:2)
+     Item 60b - Did ... receive Veterans' (VA) payments?
+U P_STAT = 1 or 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+*********************************************
+     VET_TYP1 through VET_TYP5             
+     What type of veterans payments did 
+     (person) receive?                      
+*********************************************
+
+D VET_TYP1    1    451  (0:2)
+     Item 60c - Disability compensation
+U VET_YN = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D VET_TYP2    1    452  (0:2)
+     Item 60c - Survivor benefits
+U VET_YN = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D VET_TYP3    1    453  (0:2)
+     Item 60c - Veterans' pension
+U VET_YN = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D VET_TYP4    1    454  (0:2)
+     Item 60c - Education assistance
+U VET_YN = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D VET_TYP5    1    455  (0:2)
+     Item 60c - Other veterans' payments
+U VET_YN = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D VET_QVA     1    456  (0:2)
+     Item 60d - Is ... required to fill out
+     an annual income questionnaire for the
+     veterans' administration?
+U VET_YN = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D VET_VAL     5    457  (00000:99999)
+     Item 60v - How much did ... receive 
+     before deductions in ... in 20..?
+U VET_YN = 1
+V      00000 .None or not in universe
+V    1-99999 .Veterans' payments
+
+********************************************
+     Source of Income
+     Survivor's Income  
+********************************************
+
+D SUR_YN      1    462  (0:2)
+     Item 58b - (Other than social security 
+     or VA benefits) did ... receive any  
+     survivor benefits in 20.. such as 
+     widow's pensions, estates, trusts, 
+     insurance annuities or any other 
+     survivors benefits?
+U P_STAT = 1 or 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D SUR_SC1     2    463  (00:10)
+     Item 58c - What was the source of this
+     income?  Survivor's income - Source 1
+U SUR_YN = 1
+V         00 .None or not in universe
+V         01 .Company or union survivor
+V            .pension
+V         02 .Federal government
+V         03 .Us military retirement
+V            .survivor pension
+V         04 .State or local government
+V            .survivor pension
+V         05 .Us railroad retirement 
+V            .survivor pension
+V         06 .Worker's compensation survivor
+V         07 .Black Lung Survivor Pension
+V         08 .Regular payments from estates
+V            .or trusts
+V         09 .Regular payments from 
+V            .annuities or paid-up life 
+V            .insurance
+V         10 .Other or don't know
+
+D SUR_SC2     2    465  (00:10)
+     Item 58d - Any other survivor benefits? 
+     survivor's income - Source 2  (See 
+     source types in SUR_SC1 above)	
+U SUR_YN = 1
+
+D SUR_VAL1    5    467  (00000:99999)
+     Item 58e1 - how much did ... receive 
+     from source 1 during 20..?  (See 
+     SUR_SC1) Survivor's income - Source 1
+U SUR_YN = 1
+V      00000 .None or not in universe
+V    00001-  .Survivor's income - Source one
+V      88489 .
+
+D SUR_VAL2    5    472  (00000:99999)
+     Item 58e2 - How much did ... receive
+     from source 2 (See SUR_SC2) During 20..?
+     Survivor's income - Source 2
+U SUR_YN = 1
+V      00000 .None or not in universe
+V    00001-  .Survivor's income - Source two
+V      88489 .
+
+D SRVS_VAL    6    477  (000000:999999)
+     Recode total amount of survivor's income
+     received (combined amounts in SUR_VAL1
+     and SUR_VAL2)
+V     000000 .None or not in universe
+V   000001-  .Survivor's income
+V     176978 .
+
+*********************************************
+     Source of Income
+     Disability Income   
+*********************************************
+
+D DIS_HP      1    483  (0:2)
+     Item 59b -  Does ... have a health
+     problem or a disability which prevents
+     work or which limits the kind or amount
+     of work?
+U P_STAT = 1 or 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D DIS_CS      1    484  (0:2)
+     Item 60b - Did ... retire or leave a job for health reasons
+U P_STAT = 1 or 2
+V          0 .Not in universe or children
+V          1 .Yes
+V          2 .No
+
+D DIS_YN      1    485  (0:2)
+     Item 61b –   Did ... receive any disability income in 20.. as a result of ... disability or health problems (Other than social security disability or
+     VA benefits)?
+U P_STAT = 1 or 2
+V          0 .Not in universe or children
+V          1 .Yes
+V          2 .No
+
+D DIS_SC1     2    486  (00:10)
+     Item 61c - What was the source of this income? Disability income - Source 1
+U DIS_YN = 1
+V         00 .Not in universe
+V         01 .Worker's compensation
+V         02 .Company or union disability
+V         03 .Federal government disability
+V         04 .Us military retirement
+V            .disability
+V         05 .State or local gov't employee
+V            .disability
+V         06 .Us railroad retirement
+V            .disability
+V         07 .Accident or disability 
+V            .insurance
+V         08 .Black Lung miner’s disability
+V         09 .State temporary sickness
+V         10 .Other or don't know
+
+D DIS_SC2     2    488  (00:10)
+     Item 61c - Any other disability income? Disability income - Source 2 (See DIS_SC1 for sources of disability)
+U DIS_YN = 1
+
+D DIS_VAL1    5    490  (00000:99999)
+     Item 61e1 - How much did ... receive from source 1 (See DIS_SC1) during 20..
+U DIS_SC1 = 1
+V      00000 .None or not in universe
+V    00001-  .Disability income
+V      54708 .
+
+D DIS_VAL2    5    495  (00000:99999)
+     Item 61e2 - How much did ... receive from source 2 (See DIS_SC2) during 20..
+U DIS_SC2 = 1
+V      00000 .None or not in universe
+V    00001-  .Disability income
+V      35000 .
+
+D DSAB_VAL    6    500  (000000:199999)
+	Recode total amount of disability income received (combined amounts in DIS_VAL1 and DIS_VAL2)
+V     000000 .None or not in universe
+V   000001-  .Disability income
+V      89708 .
+
+********************************************
+     Source of Income
+     Retirement Income   
+********************************************
+
+D RET_YN      1    506  (0:2)
+     Item 62b/96b/97b - Other than social security or VA benefits, during 20.. did ... receive any pension income from a previous employer or union, receive any income from an annuity, or have any retirement accounts such as a 401(k), 403(b), IRA, or other account designed specifically for retirement savings?
+U P_STAT= 1 or 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D RET_SC1     1    507  (0:8)
+     Item 62c,d/97c,d - What was the source of retirement income?  Retirement income - Source 1
+U RET_YN = 1
+V          0 .None or not in universe
+V          1 .Company or union pension
+V          2 .Federal government retirement
+V          3 .US military retirement
+V          4 .State or local government
+V            .retirement
+V          5 .US railroad retirement
+V          6 .Regular payments from annuities
+V            .or paid insurance policies
+V          7 .Regular payments from IRA,
+V            .KEOGH, or 401(k) accounts
+V          8 .Other sources or don't know
+
+D RET_SC2     1    508  (0:8)
+	Item 62c,d/97c,d - Any other retirement income? Retirement income - Source 2 (See RET_SC1 for sources of retirement)
+U RET_YN = 1
+
+D RET_VAL1    5    509  (00000:99999)
+	Item 62e1/ANNNEW2/DISTNEW2 - How much did ... receive from source type 1 (See RET_SC1) during 20..?
+U RET_SC1 = 1
+V      00000 .None or not in universe
+V    00001-  .Retirement income
+V      64179 .
+
+D RET_VAL2    5    514  (00000:99999)
+	Item 62e2/DISTNEW7 - How much did ... receive from source type 2 during 20..? (See RET_SC2)
+U RET_SC2 = 1
+V      00000 .None or not in universe
+V    00001-  .Retirement income
+V      54754 .
+
+D RTM_VAL     6    519  (000000:199999)
+	Recode total amount of retirement income received (combined amounts in RET_VAL1 and RET_VAL2)
+V      00000 .None or not in universe
+V   000001-  .Retirement income
+V     118933 .
+
+*********************************************
+     Source of Income
+     Interest Income    
+*********************************************
+
+D INT_YN      1    525  (0:2)
+     Item 99ArA-E,G – At any time during 20.., did... have money in an interest-earning checking account, a savings account, a money-market fund, CDs (certificates of deposit), savings bonds, or any other savings or investments that pay interest or dividends?
+U P_STAT = 1 or 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D INT_VAL     5    526  (00000:99999)
+Item NONRETIRENEW/RETIRENEW - How much did ... receive in interest from these sources during 20.., including even small amounts reinvested or credited to accounts?
+U INT_YN = 1
+V     000000 .None or not in universe
+V    00001-  .Interest income
+V      55289 .
+
+*********************************************
+     Source of Income
+     Dividends Income    
+*********************************************
+
+D DIV_YN      1    531  (0:2)
+     Item 99ArF – At anytime during 20.., 
+     did ... have shares of stock in 
+     corporations or mutual funds?
+U P_STAT = 1 or 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D FILLER      1    532  
+     Filler
+
+D DIV_VAL     6    533  (00000:999999)
+     Item NONRETIRENEW - How much did ... 
+     receive in dividends from shares of 
+     stocks or mutual funds during 20.., 
+     including even small amount reinvested 
+     or credited to accounts?
+U DIV_YN = 1
+V      00000 .None or not in universe
+V    00001-  .Dividends
+V      999999.
+
+*********************************************
+     Source of Income
+     Rent Income        
+*********************************************
+
+D RNT_YN      1    539  (0:2)
+     Item 65b - Did ... own any land,
+     property rented to others, or receive
+     income from royalties, from roomers or
+     boarders, or from estates or trusts?
+U P_STAT = 1 or 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D RNT_VAL     5    540  (-9999:99999)
+     Item 65c - How much did ... receive in
+     income from rent after expenses
+     during 20..?
+U RNT_YN = 1
+V      00000 .None or not in universe
+V    -9999 - .Rental income
+V      71580 .
+
+*********************************************
+     Source of Income
+     Education Assistance   
+*********************************************
+
+D ED_YN       1    545  (0:2)
+     Item 66c - Did ... receive educational
+     assistance
+U P_STAT = 1 or 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D OED_TYP1    1    546  (0:2)
+     Item Q66d(2,3,& 4) - Source of 
+     educational assistance government 
+     assistance
+U ED_YN = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D OED_TYP2    1    547  (0:2)
+     Item Q66d(5) - Source of educational
+     assistance scholarships, grants etc. 
+     from the school
+U ED_YN = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D OED_TYP3    1    548  (0:2)
+     Item Q66d(6)- Source of educational
+     assistance other assistance(employers
+     friends, etc.)
+U ED_YN = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D ED_VAL      5    549  (00000:99999)
+     Item 66h - Total amount of educational
+     assistance received
+U ED_YN = 1
+V      00000 .None or not in universe
+V    00001-  .Educational assistance
+V      32097 .
+
+*********************************************
+     Source of Income
+     Child Support      
+*********************************************
+
+D CSP_YN      1    554  (0:2)
+     Item 70b - Did ... receive child support
+     payments?
+U P_STAT = 1 or 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D CSP_VAL     5    555  (00000:99999)
+     Item 70c - How much did ... receive in
+     child support payments in 20..?
+U CSP_YN = 1
+V      00000 .None or not in universe
+V    00001-  .Child support
+V      99999 .
+
+D FILLER      6    560
+     Filler
+
+*********************************************
+     Source of Income
+     Financial assistance   
+*********************************************
+
+D FIN_YN      1    566  (0:2)
+Item 72b - Did ... receive any regular financial assistance from friends or relatives not living in this household?
+U P_STAT = 1 or 2
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D FIN_VAL     5    567  (00000:99999)
+     Item 72c - How much did ... receive in
+     Regular financial assistance in 20..?
+U FIN_YN = 1
+V      00000 .None or not in universe
+V    00001-  .Financial assistance income
+V      99999 .
+
+*********************************************
+     Source of Income
+     Other Income       
+*********************************************
+
+D OI_OFF      2    572  (00:19)
+     Item 73
+U OI_YN = 1
+V         00 .NIU
+V         01 .Social security
+V         02 .Private pensions
+V         03 .AFDC
+V         04 .Other public assistance
+V         05 .Interest
+V         06 .Dividends
+V         07 .Rents or royalties
+V         08 .Estates or trusts
+V         09 .State disability payments
+V            .(worker's comp)
+V         10 .Disability payments (own
+V            .insurance)
+V         11 .Unemployment compensation
+V         12 .Strike benefits
+V         13 .Annuities or paid up insurance
+V            .policies
+V         14 .Not income
+V         15 .Longest job
+V         16 .Wages or salary
+V         17 .Nonfarm self-employment
+V         18 .Farm self-employment
+V         19 .Anything else
+V         20 .Alimony
+
+D OI_YN       1    574  (0:2)
+     Item 73a - Did ... receive cash income not already covered such as: income from foster child care, alimony, jury duty, armed forces reserves, severance pay, hobbies, or any other sources?
+U P_STAT = 1 or 2
+V          0 .None or not in universe
+V          1 .Yes
+V          2 .No
+
+D OI_VAL      5    575  (00000:99999)
+     Item 731 - How much did ... receive in other incomes
+U OI_YN = 1
+V      00000 .None or not in universe
+V    00001-  .Other income
+V      99999 .
+
+*********************************************
+    Summary Income Values by Type          
+*********************************************
+
+D PTOTVAL     8    580  (-389961:99999999)
+     Recode - Total persons income
+     (PEARNVAL and POTHVAL)
+V          0 .None or not in universe
+V    Neg amt .Income (loss)
+V    Pos amt .Income
+
+D PEARNVAL    8    588  (-389961:99999999)
+     Recode - Total persons earnings
+     (WSAL_VAL, SEMP_VAL, FRSE_VAL)
+V          0 .None or not in universe
+V        Neg .Income (loss)
+V        Pos .Income
+
+D POTHVAL     8    596  (-389961:99999999)
+     Recode - Total other persons income
+     (All income except PEARNVAL)
+V          0 .None
+V    Neg amt .Income (loss)
+V    Pos amt .Income
+
+*********************************************
+   Person Recodes                      
+*********************************************
+
+D PTOT_R      2    604  (00:41)
+     Recode - Total person income recode
+V         00 .Not in universe
+V         01 .Under $2,500
+V         02 .$2,500 to $4,999
+V         03 .$5,000 to $7,499
+V         04 .$7,500 to $9,999
+V         05 .$10,000 to $12,499
+V         06 .$12,500 to $14,999
+V         07 .$15,000 to $17,499
+V         08 .$17,500 to $19,999
+V         09 .$20,000 to $22,499
+V         10 .$22,500 to $24,999
+V         11 .$25,000 to $27,499
+V         12 .$27,500 to $29,999
+V         13 .$30,000 to $32,499
+V         14 .$32,500 to $34,999
+V         15 .$35,000 to $37,499
+V         16 .$37,500 to $39,999
+V         17 .$40,000 to $42,499
+V         18 .$42,500 to $44,999
+V         19 .$45,000 to $47,499
+V         20 .$47,500 to $49,999
+V         21 .$50,000 to $52,499
+V         22 .$52,500 to $54,999
+V         23 .$55,000 to $57,499
+V         24 .$57,500 to $59,999
+V         25 .$60,000 to $62,499
+V         26 .$62,500 to $64,999
+V         27 .$65,000 to $67,499
+V         28 .$67,500 to $69,999
+V         29 .$70,000 to $72,499
+V         30 .$72,500 to $74,999
+V         31 .$75,000 to $77,499
+V         32 .$77,500 to $79,999
+V         33 .$80,000 to $82,499
+V         34 .$82,500 to $84,999
+V         35 .$85,000 to $87,499
+V         36 .$87,500 to $89,999
+V         37 .$90,000 to $92,499
+V         38 .$92,500 to $94,999
+V         39 .$95,000 to $97,499
+V         40 .$97,500 to $99,999
+V         41 .$100,000 and over
+
+D PERLIS      1    606   (1:4)
+     Recode - Low-income level of persons
+     (Subfamily members have primary family
+     recode)
+V          1 .Below low-income level
+V          2 .100 - 124 percent of the low-
+V            .income level
+V          3 .125 - 149 percent of the low-
+V            .income level
+V          4 .150 and above the low-income
+V            .level
+
+D POV_UNIV    1    607  (0:1)
+     Poverty universe flag
+V          0 .Person NIU
+V          1 .Person in poverty universe
+
+
+D WICYN       1    608  (0:2)
+     Who received WIC?
+V          0 .NIU
+V          1 .Received WIC
+V          2 .Did not receive WIC 
+
+D FILLER      20    609
+     Filler
+
+*********************************************
+   Edited Health Insurance Items     
+   All Persons                          
+*********************************************
+
+D MCARE       1    629  (1:2)
+     Item 74b - Was ... covered by medicare?
+U HMCARE = 1
+V          0 .NIU (children under 15)
+V          1 .Yes
+V          2 .No
+
+D FILLER    5    630  
+     Filler
+
+D MCAID       1    635  (1:2)
+     Item 74d - Was ... covered by medicaid?
+U HMCAID = 1
+V          1 .Yes
+V          2 .No
+
+D FILLER    5    636  
+     Filler
+
+D CHAMP       1    641  (1:2)
+Item 74f - Was ... covered by VA or military health care?
+U HCHAMP = 1
+V          1 .Yes
+V          2 .No
+
+D HI_YN       1    642  (0:2)
+     Item 75b - Was ... covered by private
+     health insurance plan
+U HHI_YN = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HIOWN       1    643  (0:2)
+     Item 75c - Was this health insurance
+     plan coverage in ...'s own name?
+U HI_YN = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HIEMP       1    644  (0:2)
+     Item 75d - Was this health insurance 
+     plan offered through ...'s current or 
+     former employer or union?
+U HIOWN = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D HIPAID      1    645  (0:3)
+     Item 75e - Did ...'s employer or union
+     pay for all, part, or none of the cost 
+     of this health plan?
+U HIEMP = 1
+V          0 .Not in universe
+V          1 .All
+V          2 .Part
+V          3 .None
+
+D EMCONTRB    4    646  (0000:9999)
+     Employer contribution for health
+     insurance
+V          0 .None
+V            .Dollar amount
+
+
+
+D HI          1    650  (0:2)
+     Covered by a health plan provided
+     through their current or former employer
+     or union (policyholder).
+U PRPERTYP = 2,3
+V          0 .NIU
+V          1 .Yes
+V          2 .No
+
+D HITYP       1    651  (0:2)
+     Health insurance plan type.
+V          0 .NIU
+V          1 .Family plan
+V          2 .Self-only
+
+D DEPHI       1    652  (0:1)
+     Covered by a health plan through
+     employer or union (dependent).
+V          0 .NIU
+V          1 .Yes
+
+D HILIN1      2    653  (00:16)
+     Line number of policyholder, 1st 
+     employer- or union-provided plan. (Note:
+     The policyholder is not in universe for
+     this item.)
+V          0 .NIU
+V      1 -16 .line number
+
+D HILIN2      2    655  (00:16)
+     Line number of policyholder, 2nd 
+     employer- or union-provided plan. (Note:
+     The policyholder is not in universe for
+     this item.)
+V          0 .NIU
+V      1 -16 .line number
+
+D PAID        1    657  (0:3)
+     Did ...'s former or current employer or
+     union pay for all, part, or none of the
+     health insurance premium?
+V          0 .NIU
+V          1 .All
+V          2 .Part
+V          3 .None
+
+D HIOUT       1    658  (0:2)
+     Employer or union plan covered someone
+     outside the household.
+V          0 .NIU
+V          1 .Yes
+V          2 .No
+
+D PRIV        1    659  (0:2)
+     Covered by a plan that they purchased
+     directly, that is, a private plan not
+     related to current or past employment
+     (policyholder).
+V          0 .NIU
+V          1 .Yes
+V          2 .No
+
+D PRITYP      1    660  (0:2)
+     Private health insurance plan type.
+V          0 .NIU
+V          1 .Family plan
+V          2 .Self-only
+
+D DEPRIV      1    661  (0:1)
+     Covered by private plan not related to
+     current or past employment (dependent).
+V          0 .No or NIU
+V          1 .Yes
+
+D PILIN1      2    662  (00:16)
+     Line number of policyholder, 1st
+     private health insurance plan.
+     (Note: The policyholder is not in
+     universe for this item.)
+V          0 .NIU
+V      1 -16 .line number
+
+D PILIN2      2    664  (00:16)
+     Line number of policyholder, 2nd
+     private health insurance plan.
+     (Note: The policyholder is not in
+     Universe for this item.)
+V          0 .NIU
+V      1 -16 .line number
+
+D POUT        1    666  (0:2)
+     Private plan covered someone outside
+     the household.
+V          0 .NIU
+V          1 .Yes
+V          2 .No
+
+D OUT         1    667  (0:2)
+     Covered by the health plan of someone
+     who does not live in this house.
+V          0 .NIU
+V          1 .Yes
+V          2 .No
+
+D CARE        1    668  (0:2)
+     Covered by medicare, the health
+     insurance for persons
+     65 years old and over or persons with
+     disabilities.
+V          0 .NIU
+V          1 .Yes
+V          2 .No
+
+D CAID        1    669  (0:2)
+     Covered by (medicaid/local name), the
+     government assistance program that pays
+     for health care.
+V          0 .NIU
+V          1 .Yes
+V          2 .No
+
+D MON         2    670  (00:12)
+     Number of months covered by medicaid
+     (or local name).
+V          0 .NIU
+V     1 - 12 .Number of months covered.
+
+D OTH         1    672  (0:2)
+     Covered by any other kind of health
+     insurance, including CHAMPVA,
+     VA or military health care, or the
+     Indian health service? .
+V          0 .NIU
+V          1 .Yes
+V          2 .No
+
+D OTYP_1      1    673  (0:1)
+     Covered by TRICARE or military
+     health care.
+V          0 .No
+V          1 .Yes
+
+D OTYP_2      1    674  (0:1)
+     Covered by CHAMPVA.
+V          0 .No
+V          1 .Yes
+
+D OTYP_3      1    675  (0:1)
+     Covered by VA.
+V          0 .No
+V          1 .Yes
+
+D OTYP_4      1    676  (0:1)
+     Covered by Indian health.
+V          0 .No
+V          1 .Yes
+
+D OTYP_5      1    677  (0:1)
+     Covered by other.
+V          0 .No
+V          1 .Yes
+
+D OTHSTPER    1    678  (0:2)
+     Covered by other type of health
+     insurance (medicare, medicaid, ...).
+V          0 .NIU
+V          1 .Yes
+V          2 .No
+
+D OTHSTYP1    2    679  (00:15)
+     Other type of health insurance include
+     medicare, medicaid, ....
+V          0 .NIU
+V          1 .Medicare
+V          2 .Medicaid
+V          3 .TRICARE
+V          4 .CHAMPVA
+V          5 .VA health care
+V          6 .Military health care
+V          7 .State Children's Health 
+V            .Insurance Program (CHIP)
+V          8 .Indian health service
+V          9 .Other government health care
+V         10 .Employer/union-provided
+V            .(policyholder)
+V         11 .Employer/union-provided (as
+V            .dependent)
+V         12 .Privately purchased
+V            .(policyholder)
+V         13 .Privately purchased (as
+V            .dependent)
+V         14 .Plan of someone outside the
+V            .household
+V         15 .Other
+
+D OTHSTYP2    2    681  (00:15)
+
+D OTHSTYP3    2    683  (00:15)
+
+D OTHSTYP4    2    685  (00:15)
+
+D OTHSTYP5    2    687  (00:15)
+
+D OTHSTYP6    2    689  (00:15)
+
+D HEA         1    691  (0:5)
+     Would you say ...'s health in general
+     is:
+V          0 .NIU
+V          1 .Excellent
+V          2 .Very good
+V          3 .Good
+V          4 .Fair
+V          5 .Poor
+
+D IHSFLG      1    692  (1:2)
+     Recode:  Covered by Indian Health
+     Service?  (OTYP_4 = 1 and/or
+     OTHSTYP1-6 = 8)
+U All
+V          1 .Yes
+V          2 .No
+
+D AHIPER      1    693  (0:2)
+     Does person with no coverage reported
+     previously have any coverage?
+V          0 .NIU
+V          1 .Yes
+V          2 .No
+
+D AHITYP1     2    694  (0:15)
+
+D AHITYP2     2    696  (0:15)
+
+D AHITYP3     2    698  (0:15)
+
+D AHITYP4     2    700  (0:15)
+
+D AHITYP5     2    702  (0:15)
+
+D AHITYP6     2    704  (0:15)
+     What type of insurance (was/were)
+     (Name/you) covered by in last year?
+V          0 .NIU
+V          1 .Medicare
+V          2 .Medicaid
+V          3 .Tricare
+V          4 .CAMPVA ("CHAMPVA" is the
+V            .civilian health and medical
+V            .program of the department of
+V            .veteran's affairs.)
+V          5 .VA health care
+V          6 .Military health care
+V          7 .Children's health insurance
+V            .program (chip)
+V          8 .Indian health service
+V          9 .Other government health care
+V         10 .Employer/union-provided
+V            .(policyholder)
+V         11 .Employer/union-provided (as
+V            .dependent)
+V         12 .Privately purchased
+V            .(policyholder)
+V         13 .Privately purchased (as
+V            .dependent)
+V         14 .Plan of someone outside the
+V            .household
+V         15 .Other
+
+D PCHIP       1    706  (0:2)
+     Was child under age 19 covered by
+     the state children’s health insurance
+     program?
+V          0 .NIU
+V          1 .Yes
+V          2 .No
+
+D COV_GH      1    707  (1:2)
+     Recode - Includes dependents included 
+     in group health
+V          1 .Yes
+V          2 .No
+
+D COV_HI      1    708  (1:2)
+     Recode - Includes dependents covered by
+     private health insurance
+V          1 .Yes
+V          2 .No
+
+D CH_MC       1    709  (0:2)
+     A_AGE less than 15
+     Recode - Child covered by medicaid.
+V          0 .Not child's record
+V          1 .Yes
+V          2 .No
+
+D CH_HI       1    710  (0:3)
+     A_AGE less than 15
+     Recode - Child covered by health
+     insurance.
+V          0 .Not child's record
+V          1 .Covered by person in household
+V          2 .Covered by person outside of
+V            .household
+V          3 .Not covered
+
+D FILLER      13   711
+     Filler
+
+********************************************
+   Person Index of Tax Filing Unit Head    
+********************************************
+
+D MARG_TAX    2    724  (0:40)
+     Federal Income Marginal tax rate
+V          0 .None
+V    Marginal rate of 7 possible values:
+V            .10
+V            .15         
+V            .25
+V            .28
+V            .33
+V            .35
+V            .40
+D CTC_CRD     5    726  (0:99999)
+     Child Tax Credit
+V          0 .None
+V            .Dollar amount
+
+D PENPLAN     1    731  (0:2)
+     Item 74a - Other than social security 
+     did the employer or union that ... 
+     worked for in 20.. have a pension or 
+     other type of retirement plan for any 
+     of the employees?
+U WRK_CK = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D PENINCL     1    732  (0:2)
+     Item 74b - Was ... included in that 
+     plan?
+U PENPLAN = 1
+V          0 .Not in universe
+V          1 .Yes
+V          2 .No
+
+D FILESTAT    1    733  (1:6)
+     Tax Filer status
+V          1 .Joint, both <65
+V          2 .Joint, one <65 & one 65+
+V          3 .Joint, both 65+
+V          4 .Head of household
+V          5 .Single
+V          6 .Nonfiler
+
+D DEP_STAT    2    734  (0:39)
+     Dependency status pointer
+V          0 .Not a dependent
+V    01 - 39 .Person index of person who
+V            .claimed this dependent
+
+D EIT_CRED    4    736  (0:4999)
+     Earn income tax credit
+V         0 .None
+V           .Dollar amount
+
+D ACTC_CRD    4    740  (0:9999)
+     Additional Child tax credit
+V          0 .None
+V            .Dollar amount
+
+D FICA        5    744  (0:99999)
+     Social security retirement payroll deduction
+V          0 .None
+V            .Dollar amount
+
+D FED_RET     6    749  (0:999999)
+     Federal retirement payroll deduction
+V          0 .None
+V            .Dollar amount
+
+D AGI         7    755  (-9999:9999999)
+     Adjusted gross income
+V          0 .None or not in universe
+V            .Dollar amount
+
+D FILLER      1    762
+     Filler
+
+D TAX_INC     7    763  (-9999:9999999)
+     Taxable income amount
+V          0 .None
+V    -9999 - .Dollar amount
+V    9999999 .
+
+D FEDTAX_BC   7    770  (-9999:9999999)
+     Federal income tax liability, before 
+     credits
+V          0 .None
+V    -9999 - .Dollar amount
+V    9999999 .
+
+D FEDTAX_AC   7    777  (-9999:9999999)
+     Federal income tax liability, after all
+     credits
+V          0 .None
+V    -9999 - .Dollar amount
+V    9999999 .
+
+D STATETAX_BC 6    784  (-9999:999999)
+     State income tax liability, before  
+     credits
+V          0 .None
+V    -9999 - .Dollar amount
+V     999999 .
+
+D STATETAX_AC 6    790  (-9999:999999)
+     State income tax liability, after all 
+     credits
+V          0 .None
+V    -9999 - .Dollar amount
+V     999999 .
+
+D PRSWKXPNS   4    796  (0:1999)
+     Recode Work expenses
+U
+V     0-1999 .Dollar amount
+
+D PAIDCCYN    1    800  (0:2)
+     Which children needed paid-care while
+     their parents worked?
+V          0 .NIU
+V          1 .Yes
+V          2 .No
+
+D PAIDCYNA    1    801  (0:1)
+     PAIDCCYN allocation flag.
+V          0 .Not imputed or NIU
+V          1 .Imputed
+
+D MOOP        7    802  (0:9999999)
+Total annual medical out of pocket   expenditures
+V          0 . NIU
+V  1-9999999 .Dollar amount
+
+D PHIP_VAL    6    809  (0:999999)
+Total annual amount paid for health insurance premiums
+V          0 . NIU
+V  1-999999 .Dollar amount
+
+D POTC_VAL    5    815  (0:99999)
+Edited amount paid for OTC health related items, all ages, recode
+V          0 . NIU
+V  1-99999 .Dollar amount
+
+D PMED_VAL    6    820  (0:999999)
+Edited amount paid for medical care and equipment (excluding OTC item),all ages
+V          0 . NIU
+V  1-999999 .Dollar amount
+
+D CHSP_VAL    5    826  (0:99999)
+What is the amount of child support paid?
+V          0 . NIU
+V    1-99999 .Dollar amount
+
+D CHSP_YN    1    831  (0:2)
+     Required to pay child support?
+V          0 .NIU
+V          1 .Yes
+V          2 .No
+
+D CHELSEW_YN    1    832  (0:2)
+Does this person have a child living   outside the household?
+V          0 .NIU
+V          1 .Yes
+V          2 .No
+
+D FILLER      14    833
+     Filler
+
+*********************************************
+   Allocation Flags for Basic CPS edited and 
+   Allocated Items                     
+*********************************************
+
+D PXCERT1     2    847  (-1:43)
+     Allocation flag for PECERT1
+V         00 .Value – no change
+V         01 .Blank - no change
+V         02 .Don't know - no change
+V         03 .Refused - no change
+V         10 .Value to value
+V         11 .Blank to value
+V         12 .Don't know to value
+V         13 .Refused to value
+V         20 .Value to longitudinal value
+V         21 .Blank to longitudinal value
+V         22 .Don't know to longitudinal
+V            .value
+V         23 .Refused to longitudinal value
+V         30 .Value to allocated value long
+V         31 .Blank to allocated value long
+V         32 .Don't know to allocated value
+V            .long
+V         33 .Refused to allocated value long
+V         40 .Value to allocated value
+V         41 .Blank to allocated value
+V         42 .Don't know to allocated value
+V         43 .Refused to allocated value
+V         50 .Value to blank
+V         52 .Don't know to blank
+V         53 .Refused to blank
+
+D PXCERT2     2    849  (-1:43)
+     Allocation flag for PECERT2
+V         values are the same as PXCERT1
+
+D PXCERT3     2    851  (-1:43)
+     Allocation flag for PECERT3
+V         values are the same as PXCERT1
+
+D AXRRP       1    853  (0:3)
+     Relationship to reference person
+     allocation flag
+V          0 .No change
+V          2 .Blank to value
+V          3 .Value to value
+
+D AXAGE       1    854  (0:4)
+     Age allocation flag
+V          0 .No change
+V          4 .Allocated
+
+D AXMARITL    1    855  (0:4)
+     Marital status allocation flag
+V          0 .No change
+V          4 .Allocated
+
+D AXSPOUSE    1    856  (0:3)
+     Spouse's line number allocation flag
+V          0 .No change
+V          2 .Blank to value
+V          3 .Value to value
+
+D AXSEX       1    857  (0:4)
+     Sex allocation flag
+V          0 .No change
+V          4 .Allocated
+
+D AXHGA       1    858  (0:4)
+     Highest grade attended allocation flag
+V          0 .No change
+V          4 .Allocated
+
+D PXRACE1     2    859
+     Allocation flag for PRDTRACE
+V         00 .Not allocated
+V         01 .Blank - no change
+V         02 .Don't know - no change
+V         03 .Refused - no change
+V         10 .Value to value
+V         11 .Blank to value
+V         12 .Don't know to value
+V         13 .Refused to value
+V         20 .Value to longitudinal value
+V         21 .Blank to longitudinal value
+V         22 .Don't know to longitudinal
+V            .value
+V         23 .Refused to longitudinal value
+V         30 .Value to allocated value long
+V         31 .Blank to allocated value long
+V         32 .Don't know to allocated value
+V            .long
+V         33 .Refused to allocated value long
+V         40 .Value to allocated value
+V         41 .Blank to allocated value
+V         42 .Don't know to allocated value
+V         43 .Refused to allocated value
+V         50 .Value to blank
+V         52 .Don't know to blank
+V         53 .Refused to blank
+
+D PXHSPNON    2    861
+     Allocation flag for PEHSPNON
+V         00 .Not allocated
+V         01 .Blank - no change
+V         02 .Don't know - no change
+V         03 .Refused - no change
+V         10 .Value to value
+V         11 .Blank to value
+V         12 .Don't know to value
+V         13 .Refused to value
+V         20 .Value to longitudinal value
+V         21 .Blank to longitudinal value
+V         22 .Don't know to longitudinal
+V            .value
+V         23 .Refused to longitudinal value
+V         30 .Value to allocated value long
+V         31 .Blank to allocated value long
+V         32 .Don't know to allocated value
+V            .long
+V         33 .Refused to allocated value long
+V         40 .Value to allocated value
+V         41 .Blank to allocated value
+V         42 .Don't know to allocated value
+V         43 .Refused to allocated value
+V         50 .Value to blank
+V         52 .Don't know to blank
+V         53 .Refused to blank
+
+D PXCOHAB     2    863  (0:53)
+     Demographics allocation flag for PECOHAB
+V         -1 .Not allocated
+V          0 .Value - No change
+V          1 .Blank - No change
+V          2 .Don’t know - No change
+V          3 .Refused - No change
+V         10 .Value to Value
+V         11 .Blank to Value
+V         12 .Don’t know to Value
+V         13 .Refused to Value
+V         20 .Value to Longitudinal value
+V         21 .Blank to Longitudinal value
+V         22 .Don't know to Longitudinal
+V            .value
+V         23 .Refused to Longitudinal value
+V         30 .Value to Allocated value long.
+V         31 .Blank to Allocated value long.
+V         32 .Don't know to Allocated value
+V            .long.
+V         33 .Refused to Allocated value
+V            .long.
+V         40 .Value to Allocated value
+V         41 .Blank to Allocated value
+V         42 .Don't know to Allocated value
+V         43 .Refused to Allocated value
+V         50 .Value to Blank
+V         52 .Don't know to Blank
+V         53 .Refused to Blank
+
+D PXLNMOM    2    865  (0:53)
+     Demographics  Allocation flag for
+     PELNMOM
+     Same as PXLNDAD
+
+D  PXLNDAD    2    867  (0:53)
+     Demographics  Allocation flag for
+     PELNDAD
+V          0 .Value - No change
+V          1 .Blank - No change
+V          2 .Don't know - No change
+V          3 .Refused - No change
+V         10 .Value to Value
+V         11 .Blank to Value
+V         12 .Don't know to Value
+V         13 .Refused to Value
+V         20 .Value to Longitudinal value
+V         21 .Blank to Longitudinal value
+V         22 .Don't know to Longitudinal
+V            .value
+V         23 .Refused to Longitudinal value
+V         30 .Value to Allocated value long.
+V         31 .Blank to Allocated value long.
+V         32 .Don't know to Allocated value
+V            .long.
+V         33 .Refused to Allocated value
+V            .long.
+V         40 .Value to Allocated value
+V         41 .Blank to Allocated value
+V         42 .Don't know to Allocated value
+V         43 .Refused to Allocated value
+V         50 .Value to Blank
+V         52 .Don't know to Blank
+V         53 .Refused to Blank
+
+D PXMOMTYP    2    869  (0:53)
+    Demographics Allocation flag for PEMOMTYP
+    Same as PXLNDAD
+
+D PXDADTYP    2    871  (0:53)
+     Demographics Allocation flag for PEDADTYP
+     Same as PXLNDAD
+
+D PXAFEVER    2    873  (0:53)
+     Allocation flag for PEAFEVER
+V         -1 .Not allocated
+V         00 .Value - no change
+V         01 .Blank - no change
+V         02 .Don’t know - no change
+V         03 .Refused - no change
+V         10 .Value to value
+V         11 .Blank to value
+V         12 .Don’t know to value
+V         13 .Refused to value
+V         20 .Value to longitudinal value
+V         21 .Blank to longitudinal value
+V         22 .Don’t know to longitudinal
+V            .value
+V         23 .Refused to longitudinal value
+V         30 .Value to allocated value long
+V         31 .Blank to allocated value long
+V         32 .Don’t know to allocated value
+V            .long
+V         33 .Refused to allocated value long
+V         40 .Value to allocated value
+V         41 .Blank to allocated value
+V         42 .Don’t know to allocated value
+V         43 .Refused to allocated value
+V         50 .Value to blank
+V         52 .Don’t know to blank
+V         53 .Refused to blank
+
+D PXAFWHN1    2    875 (-1:53)
+     Allocation flag for PEAFWHN1
+U PEAFEVER=1
+V         -1 .Not allocated
+V         00 .Value - no change
+V         01 .Blank - no change
+V         02 .Don’t know - no change
+V         03 .Refused - no change
+V         10 .Value to value
+V         11 .Blank to value
+V         12 .Don’t know to value
+V         13 .Refused to value
+V         20 .Value to longitudinal value
+V         21 .Blank to longitudinal value
+V         22 .Don’t know to longitudinal
+v            .value
+V         23 .Refused to longitudinal value
+V         30 .Value to allocated value long
+V         31 .Blank to allocated value long
+V         32 .Don’t know to allocated value
+V            .long
+V         33 .Refused to allocated value long
+V         40 .Value to allocated value
+V         41 .Blank to allocated value
+V         42 .Don’t know to allocated value
+V         43 .Refused to allocated value
+V         50 .Value to blank
+V         52 .Don’t know to blank
+V         53 .Refused to blank
+
+D PXDISEAR    2    877
+     Allocation Flag
+V         -1 .Not allocated
+V         00 .Value - no change
+V         01 .Blank - no change
+V         02 .Don’t know - no change
+V         03 .Refused - no change
+V         10 .Value to value
+V         11 .Blank to value
+V         12 .Don’t know to value
+V         13 .Refused to value
+V         20 .Value to longitudinal value
+V         21 .Blank to longitudinal value
+V         22 .Don’t know to longitudinal
+v            .value
+V         23 .Refused to longitudinal value
+V         30 .Value to allocated value long
+V         31 .Blank to allocated value long
+V         32 .Don’t know to allocated value
+V            .long
+V         33 .Refused to allocated value long
+V         40 .Value to allocated value
+V         41 .Blank to allocated value
+V         42 .Don’t know to allocated value
+V         43 .Refused to allocated value
+V         50 .Value to blank
+V         52 .Don’t know to blank
+V         53 .Refused to blank
+
+D PXDISEYE    2    879
+     Allocation Flag
+     Values same as PXDISEAR
+
+D PXDISREM    2    881
+     Allocation Flag
+     Values same as PXDISEAR
+
+D PXDISPHY    2    883
+     Allocation Flag
+     Values same as PXDISEAR
+
+D PXDISDRS    2    885
+     Allocation Flag
+     Values same as PXDISEAR
+
+D PXDISOUT    2    887
+     Allocation Flag
+     Values same as PXDISEAR
+
+D PXNATVTY    2    889  (0:53)
+     Allocation flag for PENATVTY
+V         -1 .Not allocated
+V         00 .Value - no change
+V         01 .Blank - no change
+V         02 .Don't know - no change
+V         03 .Refused - no change
+V         10 .Value to value
+V         11 .Blank to value
+V         12 .Don't know to value
+V         13 .Refused to value
+V         20 .Value to longitudinal value
+V         21 .Blank to longitudinal value
+V         22 .Don't know to longitudinal
+V            .value
+V         23 .Refused to longitudinal value
+V         30 .Value to allocated value long.
+V         31 .Blank to allocated value long.
+V         32 .Don't know to allocated value
+V            .long.
+V         33 .Refused to allocated value
+V            .long.
+V         40 .Value to allocated value
+V         41 .Blank to allocated value
+V         42 .Don't know to allocated value
+V         43 .Refused to allocated value
+V         50 .Value to blank
+V         52 .Don't know to blank
+V         53 .Refused to blank
+
+D PXMNTVTY    2    891  (0:53)
+     Allocation flag for PEMNTVTY
+     Same as PXNATVTY
+
+D PXFNTVTY    2    893  (0:53)
+     Allocation flag for PEFNTVTY
+     Same as PXNATVTY
+
+D PXINUSYR    2    895  (0:53)
+     Allocation flag for PEINUSYR
+     Same as PXNATVTY
+
+D PRWERNAL    1    897  (0:1)
+V          0 .Not allocated
+V          1 .Allocated
+
+D PRHERNAL    1    898  (0:1)
+V          0 .Not allocated
+V          1 .Allocated
+
+D AXHRS       1    899  (0:4)
+V          0 .No change or children or armed
+V            .forces
+V          4 .Allocated
+
+D AXWHYABS    1    900  (0:4)
+V          0 .No change or children or armed
+V            .forces
+V          4 .Allocated
+
+D AXPAYABS    1    901  (0:4)
+V          0 .No change or children or armed
+V            .forces
+V          4 .Allocated
+
+D AXCLSWKR    1    902  (0:4)
+V          0 .No change or children or armed
+V            .forces
+V          4 .Allocated
+
+D AXNLFLJ     1    903  (0:4)
+V          0 .No change or children or armed
+V            .forces
+V          4 .Allocated
+
+D AXUSLHRS    1    904  (0:4)
+V          0 .No change or children or armed
+V            .forces
+V          4 .Allocated
+
+D AXHRLYWK    1    905  (0:4)
+V          0 .No change or children or armed
+V            .forces
+V          4 .Allocated
+
+D AXUNMEM     1    906  (0:4)
+V          0 .No change or children or armed
+V            .forces
+V          4 .Allocated
+
+D AXUNCOV     1    907  (0:4)
+V          0 .No change or children or armed
+V            .forces
+V          4 .Allocated
+
+D AXENRLW     1    908  (0:4)
+V          0 .No change or children or armed
+V            .forces
+V          4 .Allocated
+
+D AXHSCOL     1    909  (0:4)
+V          0 .No change or children or armed
+V            .forces
+V          4 .Allocated
+
+D AXFTPT      1    910  (0:4)
+V          0 .No change or children or armed
+V            .forces
+V          4 .Allocated
+
+D AXLFSR      1    911  (0:4)
+     Labor force status recode allocation
+     flag
+V          0 .No change or children or armed
+V            .forces
+V          4 .Allocated
+
+*******************************************
+    Allocation Flags for March Supplement  
+    Edited and Allocated Items             
+*******************************************
+D I_WORKYN    1    912  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_WTEMP     1    913  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_NWLOOK    1    914  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_NWLKWK    1    915  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_RSNNOT    1    916  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_WKSWK     1    917  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_WKCHK     1    918  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_LOSEWK    1    919  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_LKWEEK    1    920  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_LKSTR     1    921  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_PYRSN     1   922  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_PHMEMP    1    923  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_HRSWK     1    924  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_HRCHK     1    925  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_PTYN      1    926  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_PTWKS     1    927  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_PTRSN     1    928  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_LJCW      1    929  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_INDUS     1    930  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_OCCUP     1    931  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_NOEMP     1    932  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_NXTRES    1    933  (0:5)
+     Imputation flag
+V          0 .NIU, or not changed
+V          1 .Assigned from householder
+V          2 .Assigned from spouse
+V          3 .Assigned from mother
+V          4 .Assigned from father
+V          5 .Allocated from matrix
+
+D I_MIG1      1    934  (0:5)
+     MIGSAME imputation flag.
+V          0 .NIU, or not changed.
+V          1 .Assigned from householder.
+V          2 .Assigned from spouse
+V          3 .Assign from mother
+V          4 .Assign from father
+V          5 .Allocated from matrix mob
+
+D I_MIG2      2    935  (0:10)
+     MIG_ST imputation flag.
+V          0 .NIU, or not changed.
+V          1 .Assigned from householder
+V          2 .Assigned from spouse
+V          3 .Assigned from mother
+V          4 .Assigned from father
+V          5 .Allocated from matrix MIG1
+V          6 .Allocated from matrix MIG2
+V          7 .Allocated from MIG3
+V          8 .Allocated from MIG4
+V          9 .Allocated from MIG5
+V         10 .Allocated from MIG6
+
+D I_MIG3      1    937  (0:5)
+     Imputation flag.
+V          0 .NIU, or not changed.
+V          1 .State and below assigned
+V          2 .County and below assigned
+V          3 .MCD and below assigned
+V          4 .Place only
+V          5 .County in New York City 
+V            .assigned
+
+D I_DISYN     1    938  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_ERNYN     1    939  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_ERNSRC    1    940  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_ERNVAL    1    941  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_RETSC2    1    942  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_WSYN      1    943  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_WSVAL     1    944  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_SEYN      1    945  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_SEVAL     1    946  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_FRMYN     1    947  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_FRMVAL    1    948  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_UCYN      1    949  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_UCVAL     1    950  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D I_WCYN      1    951  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_WCTYP     1    952  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_WCVAL     1    953  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D I_SSYN      1    954  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_SSVAL     1    955  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D RESNSSA     1    956  (0:1)
+     RESNSS1_2 allocation flag
+V          0 .Not imputed or not in universe
+V          1 .Imputed
+
+D I_SSIYN     1    957  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D SSKIDYNA    1    958  (0:1)
+     SSKIDYN allocation flag
+V          0 .Not imputed or not in universe
+V          1 .Imputed 
+
+D I_SSIVAL    1    959  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D RESNSSIA    1    960  (0:1)
+     RESNSSI1_2 allocation flag
+V          0 .Not imputed or not in universe
+V          1 .Imputed
+
+D I_PAWYN     1    961  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D SSIKDYNA 	 1    962 (0:1) 
+SSIKIDYN allocation flag 
+V 	    0 .Not imputed or not in universe 
+V 		1 .Imputed
+
+D I_PAWTYP    1    963  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_PAWMO     1    964  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_PAWVAL    1    965  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D I_VETYN     1    966  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_VETTYP    1    967  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_VETQVA    1    968  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_VETVAL    1    969  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D I_SURYN     1    970  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_SURSC1    1    971  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_SURSC2    1    972  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_SURVL1    1    973  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D I_SURVL2    1    974  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D I_DISHP     1    975  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_DISCS     1    976  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_DISSC1    1    977  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_DISSC2    1    978  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_DISVL1    1    979  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D I_DISVL2    1    980  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D I_RETYN     1    981  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_RETSC1    1    982  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_RETVL1    1    983  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D I_RETVL2    1    984  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D I_INTYN     1    985  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_INTVAL    1    986  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D I_DIVYN     1    987  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_DIVVAL    1    988  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D I_RNTYN     1    989  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_RNTVAL    1    990  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D I_EDYN      1    991  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_EDTYP1    1    992  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_EDTYP2    1    993  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_OEDVAL    1    994  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D I_CSPYN     1    995  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_CSPVAL    1    996  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D FILLER      2    997
+     Filler
+
+D I_FINYN     1    999  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_FINVAL    1   1000  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D I_OIVAL     1   1001  (0:4)
+V          0 .No allocation
+V          1 .Allocated from hot deck
+V          2 .Allocated a loss
+V          3 .Statistically matched at Level 1
+V          4 .Statistically matched at Level 2
+
+D WICYNA      1   1002  (0:1)
+     WICYN allocation flag
+V          0 .Not imputed or not in universe
+V          1 .Imputed
+
+D I_HI        1   1003  (0:1)
+     Imputation item: HI
+V          0 .No
+V          1 .Allocated
+
+D I_DEPHI     1   1004  (0:1)
+     Imputation item: DEPHI
+V          0 .No
+V          1 .Allocated
+
+D I_PAID      1   1005  (0:1)
+     Imputation item: PAID
+V          0 .No
+V          1 .Allocated
+
+D I_HIOUT     1   1006  (0:1)
+     Imputation item: HIOUT
+V          0 .No
+V          1 .Allocated
+
+D I_PRIV      1   1007  (0:1)
+     Imputation item: PRIV
+V          0 .No
+V          1 .Allocated
+
+D I_DEPRIV    1   1008  (0:1)
+     Imputation item: DEPRIV
+V          0 .No
+V          1 .Allocated
+
+D I_POUT      1   1009  (0:1)
+     Imputation item: POUT
+V          0 .No
+V          1 .Allocated
+
+D I_OUT       1    1010  (0:1)
+     Imputation item: OUT
+V          0 .No
+V          1 .Allocated
+
+D I_CARE      1   1011  (0:2)
+     Imputation item: CARE
+V          0 .No
+V          1 .Allocated
+V          2 .Logical imputed
+
+D I_CAID      1   1012  (0:2)
+     Imputation item: CAID
+V          0 .No
+V          1 .Allocated
+V          2 .Logical imputed
+
+D I_MON       1    1013  (0:1)
+     Imputation item: MON
+V          0 .No
+V          1 .Allocated
+
+D I_OTH       1   1014  (0:2)
+     Imputation item: OTH
+V          0 .No
+V          1 .Allocated
+V          2 .Logical imputed
+
+D I_OTYP      1   1015  (0:2)
+     Imputation items: OTYP_1, ..., OTYP_5.
+V          0 .No
+V          1 .Allocated
+V          2 .Logical imputed
+
+D I_OSTPER    1   1016  (0:1)
+     Imputation item: OTHSTPER
+V          0 .No
+V          1 .Allocated
+
+D I_OSTYP     1   1017  (0:1)
+     Imputation items: OTHSTYP1, ...,
+     OTHSTYP6.
+V          0 .No
+V          1 .Allocated
+
+D I_HEA       1   1018  (0:1)
+     Imputation item: HEA
+V          0 .No
+V          1 .Allocated
+
+D IAHIPER     1   1019  (0:1)
+     AHIPER allocation flag.
+V          0 .Not imputed OR NIU
+V          1 .Imputed
+
+D IAHITYP     1   1020  (0:1)
+     AHITYP allocation flag.
+V          0 .Not imputed OR NIU
+V          1 .NIU
+
+D I_PCHIP     1   1021  (0:1)
+     PCHIP allocation flag.
+V          0 .Not imputed or NIU
+V          1 .Imputed
+
+D I_PENPLA    1   1022  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_PENINC    1   1023  (0:1)
+V          0 .No change or children
+V          1 .Allocated
+
+D I_PHIPVAL   1   1024  (0:5)
+    Allocation flag for PHIP_VAL.  
+V          0 .Valid response or niu 
+V          1 .Allocated at family level
+.(non-   elderly only) 
+V          2 .Allocated at individual level
+.(elderly only) 
+V          3 .Missing in family with at least
+.one valid response
+V          4 .Value changed to $0 because all 
+.family members are uninsured 
+V          5 .Logical imputation equal to $0 
+.for elderly Medicare .enrollees, elderly uninsured, .non-elderly where entire .family is uninsured 
+
+D I_POTCVAL   1   1025  (0:1)
+     Imputation item:POTC_VAL
+V          0 .No
+V          1 .Allocated
+
+D I_PMEDVAL   1   1026  (0:1)
+     Imputation item: PMED_VAL
+V          0 .No
+V          1 .Allocated
+
+D I_CHSPVAL   1   1027  (0:1)
+     Imputation item: CHSP_VAL
+V          0 .No
+V          1 .Allocated
+
+D I_CHSPYN    1   1028  (0:1)
+     Imputation item: CHSP_YN
+V          0 .No
+V          1 .Allocated
+
+D I_CHELSEWYN 1   1029  (0:1)
+     Imputation item: CHELSEW_YN
+V          0 .No
+V          1 .Allocated
+
+D FILLER     20   1030
+     Filler
+
+D A_WERNTF    1   1050  (0:1)
+     Current earnings - Weekly pay
+     Topcoded flag
+
+D A_HERNTF    1   1051  (0:1)
+     Current earnings - Hourly pay
+     Topcoded flag
+
+D TCERNVAL    1   1052  (0:1)
+     Earnings from employer or self-
+     employment, topcoded flag
+
+D TCWSVAL     1   1053  (0:1)
+     Wage and salary income topcoded flag
+
+D TCSEVAL     1   1054  (0:1)
+     Nonfarm self-employment income
+     topcoded flag
+
+D TCFFMVAL    1   1055  (0:1)
+     Farm self-employment income topcoded
+     flag
+
+D TSURVAL1    1   1056  (0:1)
+     Survivors income, source 1,
+     Topcoded flag
+V          0 .Not topcoded
+V          1 .Topcoded
+
+D TSURVAL2    1   1057  (0:1)
+     Survivors income, source 2,
+     Topcoded flag
+V          0 .Not topcoded
+V          1 .Topcoded
+
+D TDISVAL1    1   1058  (0:1)
+     Disability income, source 1,
+     Topcoded flag
+V          0 .Not topcoded
+V          1 .Topcoded
+
+D TDISVAL2    1   1059  (0:1)
+     Disability income, source 2,
+     Topcoded flag
+V          0 .Not topcoded
+V          1 .Topcoded
+
+D TRETVAL1    1   1060  (0:1)
+     Retirement income, source 1,
+     Topcoded flag
+V          0 .Not topcoded
+V          1 .Topcoded
+
+D TRETVAL2    1   1061  (0:1)
+     Retirement income, source 2,
+     Topcoded flag
+V          0 .Not topcoded
+V          1 .Topcoded
+
+D TINT_VAL    1   1062  (0:1)
+     Interest income
+     Topcoded flag
+V          0 .Not topcoded
+V          1 .Topcoded
+
+D TDIV_VAL    1   1063  (0:1)
+     Dividend income
+     Topcoded flag
+V          0 .Not topcoded
+V          1 .Topcoded
+
+D TRNT_VAL    1   1064  (0:1)
+     Rent income
+     Topcoded flag
+V          0 .Not topcoded
+V          1 .Topcoded
+
+D TED_VAL     1   1065  (0:1)
+     Education assistance
+     Topcoded flag
+V          0 .Not topcoded
+V          1 .Topcoded
+
+D TCSP_VAL    1   1066  (0:1)
+     Child support payments
+     Topcoded flag
+V          0 .Not topcoded
+V          1 .Topcoded
+
+D FILLER      1    1067
+     Filler
+
+D TFIN_VAL    1   1068  (0:1)
+     Financial assistance
+     Topcoded flag
+V          0 .Not topcoded
+V          1 .Topcoded
+
+D TOI_VAL     1   1069
+     Other income
+     Topcoded flag
+V          0 .Not topcoded
+V          1 .Topcoded
+
+D TPHIP_VAL   1   1070  (0:1)
+     Health insurance premiums
+     Topcoded flag
+V          0 .Not topcoded
+V          1 .Topcoded
+
+D TPOTC_VAL    1   1071  (0:1)
+     OTC medical expenses
+     Topcoded flag
+V          0 .Not topcoded
+V          1 .Topcoded
+
+D TPMED_VAL   1   1072  (0:1)
+     Medical expenses (except OTC)
+     Topcoded flag
+V          0 .Not topcoded
+V          1 .Topcoded
+
+D TCHSP_VAL   1   1073  (0:1)
+     Child support paid
+     Topcoded flag
+V          0 .Not topcoded
+V          1 .Topcoded
+
+ 
+D FILLER    3    1074
+     Filler
+
+
